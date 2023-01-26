@@ -6,12 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint:cspell": "git diff --name-only | cspell --file-list stdin",
+    "lint": "eslint --fix",
+    "lint:cspell": "cspell './**/*.{ts,tsx}' --no-progress --gitignore",
     "prepare": "husky install"
   },
   "dependencies": {
     "@next/font": "13.1.2",
+    "@stitches/react": "^1.2.8",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "cspell": "^6.18.1",
     "husky": "^8.0.3",
-    "lint-staged": "^13.1.0"
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.3"
   }
 }

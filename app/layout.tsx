@@ -1,18 +1,22 @@
-import './globals.css'
+import { SSRStylesheet } from "@/src/stitches";
+import { globalStyles } from "@/src/stitches/globalStyles";
+import { Sofia } from "@next/font/google";
+
+const font = Sofia({ subsets: ["latin"], weight: "400" });
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
+  globalStyles();
+
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang="en" className={font.className}>
       <head />
-      <body>{children}</body>
+      <body>
+        <SSRStylesheet>{children}</SSRStylesheet>
+      </body>
     </html>
-  )
+  );
 }

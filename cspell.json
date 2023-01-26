@@ -1,6 +1,8 @@
 {
   "words": [
-    "leemulvey"
+    "leemulvey",
+    "mulvey",
+    "wordmark"
   ],
   "ignorePaths": ["node_modules/**", "pnpm-lock.yaml", "package.json"],
   "includeRegExpList": ["*/**.tsx", "*/**.ts", "*/**.js", "*/**.json"]

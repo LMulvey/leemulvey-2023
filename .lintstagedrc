@@ -1,6 +1,6 @@
 {
   "*.{js,jsx,ts,tsx}": [
-    "pnpm lint:spell",
+    "pnpm lint:cspell",
     "pnpm lint"
   ]
 }

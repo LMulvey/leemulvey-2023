@@ -2,7 +2,9 @@
   "words": [
     "leemulvey",
     "mulvey",
-    "wordmark"
+    "wordmark",
+    "cpath",
+    "csvg"
   ],
   "ignorePaths": ["node_modules/**", "pnpm-lock.yaml", "package.json"],
   "includeRegExpList": ["*/**.tsx", "*/**.ts", "*/**.js", "*/**.json"]

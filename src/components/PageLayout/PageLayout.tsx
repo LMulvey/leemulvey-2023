@@ -3,9 +3,9 @@ import { Sidebar } from "../Sidebar";
 
 export const PageLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="grid gap-4 grid-cols-2 max-w-2xl mx-auto my-[144px]">
+    <main className="grid gap-24 grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto my-12">
       <Sidebar />
       {children}
-    </div>
+    </main>
   );
 };

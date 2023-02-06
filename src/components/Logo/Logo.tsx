@@ -13,10 +13,9 @@ const descriptors = [
   "Ask Me About GraphQL",
   "Secretly Loves AWS",
   "Full Stacker",
-  "Master Description Writer",
+  "Description Writer",
   "Edmonton > Calgary",
   "Lover of All Love 🏳️‍🌈",
-  "FIRE! Fire on the Mountain! 🔥",
   "Jazz Hands 🤗",
   "Manatee Researcher 🐋",
   "Five-time 10km Runner",
@@ -28,14 +27,14 @@ const randomDescriptor = (() => {
   return descriptor;
 })();
 
-export const Logo = () => {
+export const Logo = ({ className }: { className?: string }) => {
   return (
-    <header>
+    <header className={className}>
       <h1
         className={cx([
           fredoka.className,
-          "text-5xl",
-          "lg:text-6xl",
+          "text-4xl",
+          "lg:text-5xl",
           "font-extrabold",
           "text-transparent",
           "bg-clip-text",
@@ -43,11 +42,12 @@ export const Logo = () => {
           "from-orange",
           "to-salsa",
           "pb-2",
+          "m-0",
         ])}
       >
         Lee Mulvey
       </h1>
-      <p className="font-mono text-2xl font-extrabold p-0 -mt-2 text-white">
+      <p className="font-mono text-xl font-extrabold p-0 -mt-2 text-white">
         {randomDescriptor}
       </p>
     </header>

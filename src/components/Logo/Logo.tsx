@@ -1,6 +1,5 @@
 import { Fredoka_One } from "@next/font/google";
-import { useEffect, useState } from "react";
-import { Wordmark } from "./Header.styles";
+import { cx } from "class-variance-authority";
 
 const fredoka = Fredoka_One({
   subsets: ["latin"],
@@ -24,28 +23,33 @@ const descriptors = [
   "Sweat of the Seas 🏴‍☠️",
 ];
 
-const randomDescriptor = (currentDescriptor?: string) => {
+const randomDescriptor = (() => {
   let descriptor = descriptors[Math.floor(Math.random() * descriptors.length)];
-  if (descriptor === currentDescriptor) {
-    descriptor = randomDescriptor(currentDescriptor);
-  }
   return descriptor;
-};
+})();
 
-export const Header = () => {
-  const [descriptor, setDescriptor] = useState<string>(randomDescriptor());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDescriptor(randomDescriptor(descriptor));
-    }, 5_000);
-    return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+export const Logo = () => {
   return (
     <header>
-      <Wordmark className={fredoka.className}>Lee Mulvey</Wordmark>
+      <h1
+        className={cx([
+          fredoka.className,
+          "text-5xl",
+          "lg:text-6xl",
+          "font-extrabold",
+          "text-transparent",
+          "bg-clip-text",
+          "bg-gradient-to-r",
+          "from-orange",
+          "to-salsa",
+          "pb-2",
+        ])}
+      >
+        Lee Mulvey
+      </h1>
+      <p className="font-mono text-2xl font-extrabold p-0 -mt-2 text-white">
+        {randomDescriptor}
+      </p>
     </header>
   );
 };

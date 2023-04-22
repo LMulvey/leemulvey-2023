@@ -2,47 +2,47 @@ import Link from "next/link";
 import { Logo } from "../Logo";
 import { FolderKey, Github, MailCheck, ScanFace, Twitter } from "lucide-react";
 
-const LinkClasses =
-  "text-white text-xl font-bold mb-5 flex flex-row gap-4 items-center";
+const iconClasses = "text-orange/80";
+
+const linkClasses =
+  "text-neutral-100 p-2 rounded-md transition-colors hover:bg-slate-300/50 focus:bg-slate-300/50 text-xl font-bold mb-3 flex flex-row gap-4 items-center";
 
 export const Sidebar = () => {
   return (
-    <aside className="max-w-full md:max-w-max grid grid-col-1">
-      <Logo className="mb-5 pb-5 border-b border-slate-200" />
-      <Link className={LinkClasses} href="/about">
-        <ScanFace size={24} />
+    <aside className="max-w-full md:max-w-fit h-fit grid grid-col-1">
+      <Logo className="mb-3 px-2 pb-5 border-b border-slate-200" />
+      <Link className={linkClasses} href="/about">
+        <ScanFace className={iconClasses} size={24} />
         About
       </Link>
-      <Link
-        className={`${LinkClasses} mb-5 pb-5 border-b border-slate-200`}
-        href="/projects"
-      >
-        <FolderKey size={24} />
+      <Link className={`${linkClasses} mb-5`} href="/projects">
+        <FolderKey className={iconClasses} size={24} />
         Projects
       </Link>
+      <div className="mb-5 border-b border-slate-200" />
       <a
-        className={LinkClasses}
+        className={linkClasses}
         href="mailto:hello@leemulvey.com?subject=Hey, Lee, I promise I am not sending you spam"
       >
-        <MailCheck size={24} />
+        <MailCheck className={iconClasses} size={24} />
         Email
       </a>
       <a
-        className={LinkClasses}
+        className={linkClasses}
         href="https://github.com/lmulvey"
         rel="noopener noreferrer"
         target="_blank"
       >
-        <Github size={24} />
+        <Github className={iconClasses} size={24} />
         GitHub
       </a>
       <a
-        className={LinkClasses}
+        className={linkClasses}
         href="https://twitter.com/leemulvey"
         rel="noopener noreferrer"
         target="_blank"
       >
-        <Twitter size={24} />
+        <Twitter className={iconClasses} size={24} />
         Twitter
       </a>
     </aside>

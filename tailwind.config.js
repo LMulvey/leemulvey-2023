@@ -11,8 +11,8 @@ module.exports = {
         mediumBlue: "#CCD6EB",
         lightBlue: "#E9ECF5",
         orange: "#e2662c",
-      }
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+};

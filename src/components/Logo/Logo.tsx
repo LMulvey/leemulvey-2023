@@ -1,5 +1,6 @@
 import { Fredoka_One } from "next/font/google";
 import { cx } from "class-variance-authority";
+import Link from "next/link";
 
 const fredoka = Fredoka_One({
   subsets: ["latin"],
@@ -10,26 +11,27 @@ const descriptors = [
   "Weird Dad 👨🏼‍💻",
   "Super Weird Dad 💁🏼‍♂️",
   "Bike Dad 🚲",
-  "Ask Me About GraphQL",
-  "Secretly Loves AWS",
-  "Full Stacker",
-  "Description Writer",
-  "Edmonton > Calgary",
+  "Ask Me About GraphQL 🤓",
+  "Secretly Loves AWS 🌤️",
+  "Full Stacker 🥞",
+  "Description Writer 📝",
+  "Edmonton > Calgary 🌁",
   "Lover of All Love 🏳️‍🌈",
   "Jazz Hands 🤗",
   "Manatee Researcher 🐋",
-  "Five-time 10km Runner",
+  "Five-time 10km Runner 🏃🏼‍♂️",
   "Sweat of the Seas 🏴‍☠️",
 ];
 
 const randomDescriptor = (() => {
-  let descriptor = descriptors[Math.floor(Math.random() * descriptors.length)];
+  const descriptor = descriptors[Math.floor(Math.random() * descriptors.length)];
   return descriptor;
 })();
 
 export const Logo = ({ className }: { className?: string }) => {
   return (
-    <header className={className}>
+    <Link className="focus:bg-slate-300/50 rounded-md hover:scale-105 transition-transform" href="/">
+    <header className={`${className} select-none`}>
       <h1
         className={cx([
           fredoka.className,
@@ -47,9 +49,10 @@ export const Logo = ({ className }: { className?: string }) => {
       >
         Lee Mulvey
       </h1>
-      <p className="font-mono text-xl font-extrabold p-0 -mt-2 text-white">
+      <p className="font-mono text-xl font-extrabold p-0 -mt-2 text-slate-700/80">
         {randomDescriptor}
       </p>
     </header>
+    </Link>
   );
 };

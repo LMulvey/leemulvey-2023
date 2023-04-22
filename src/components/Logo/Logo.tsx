@@ -1,4 +1,4 @@
-import { Fredoka_One } from "@next/font/google";
+import { Fredoka_One } from "next/font/google";
 import { cx } from "class-variance-authority";
 
 const fredoka = Fredoka_One({

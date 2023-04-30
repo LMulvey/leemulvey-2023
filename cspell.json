@@ -1,14 +1,24 @@
 {
   "words": [
-    "lucide",
-    "leemulvey",
-    "mulvey",
-    "wordmark",
     "cpath",
     "csvg",
+    "leemulvey",
+    "lucide",
+    "mulvey",
     "tailwind",
-    "tailwindcss"
+    "tailwindcss",
+    "webp",
+    "wordmark"
   ],
-  "ignorePaths": ["node_modules/**", "pnpm-lock.yaml", "package.json"],
-  "includeRegExpList": ["*/**.tsx", "*/**.ts", "*/**.js", "*/**.json"]
+  "ignorePaths": [
+    "node_modules/**",
+    "pnpm-lock.yaml",
+    "package.json"
+  ],
+  "includeRegExpList": [
+    "*/**.tsx",
+    "*/**.ts",
+    "*/**.js",
+    "*/**.json"
+  ]
 }

@@ -1,0 +1,10 @@
+.layout--container {
+  @apply drop-shadow-2xl;
+
+  background: theme('colors.darkBlue');
+  padding: 48px 64px;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  transform: perspective(80vw) rotateY(8deg);
+  box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.14) inset;
+}

@@ -17,8 +17,7 @@ body {
 body {
   margin: 0;
   font-size: 18px;
-  background-image: radial-gradient(#92afc2 0.5px, transparent 0.5px);
-  background-size: calc(10 * 0.5px) calc(10 * 0.5px);
+  background: linear-gradient(theme('colors.darkBlue'), #50a2b8);
   min-height: 100vh;
 }
 

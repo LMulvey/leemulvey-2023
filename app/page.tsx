@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <article className="prose prose-slate lg:prose-xl mt-8">
+    <article className="prose prose-slate lg:prose-xl">
       <div className="flex flex-row items-center gap-8">
         <Image
           className="rounded-full mt-0 mb-0 lg:mt-0 lg:mb-0"

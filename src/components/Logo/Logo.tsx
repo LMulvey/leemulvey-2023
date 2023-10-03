@@ -22,9 +22,14 @@ const descriptors = [
   "Sweat of the Seas 🏴‍☠️",
 ];
 
-const randomDescriptor = () => {
+const randomDescriptor = (currentDescriptor?: string): string => {
   const descriptor =
     descriptors[Math.floor(Math.random() * descriptors.length)];
+
+  if (descriptor === currentDescriptor) {
+    return randomDescriptor(currentDescriptor);
+  }
+
   return descriptor;
 };
 
@@ -64,7 +69,7 @@ export const Logo = ({ className }: { className?: string }) => {
 
     interval = setInterval(() => {
       setDescriptor(randomDescriptor());
-    }, 300);
+    }, 600);
   }, []);
 
   const onMouseOut = useCallback(() => {

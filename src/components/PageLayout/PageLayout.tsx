@@ -11,7 +11,7 @@ const animationVariants: Variants = {
     opacity: 1,
     transition: {
       duration: 1,
-      mass: 2,
+      mass: 1,
       stiffness: 40,
       type: "spring",
     },

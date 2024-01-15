@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const bodyClasses = cvu([
-    "text-darkGreen",
+    "text-dark-green",
     montserrat.variable,
     lilita.variable,
     "font-sans",

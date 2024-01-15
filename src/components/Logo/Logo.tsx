@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import "./Logo.scss";
+import Image from "next/image";
 
 const descriptors = [
   "Weird Dad 👨🏼‍💻",
@@ -37,28 +38,12 @@ let interval: ReturnType<typeof setInterval> | undefined;
 
 export const Logo = ({ className }: { className?: string }) => {
   const [descriptor, setDescriptor] = useState(descriptors[0]);
-
-  const headingClasses = cvu([
-    "logo--stroke",
-    "font-heading",
-    "text-4xl",
-    "lg:text-5xl",
-    "font-extrabold",
-    "text-transparent",
-    "bg-clip-text",
-    "bg-gradient-to-r",
-    "from-orange",
-    "to-salsa",
-    "pb-2",
-    "m-0",
-  ]);
-
   const descriptorClasses = cvu([
     "font-mono",
     "font-extrabold",
     "p-0",
     "m-0",
-    "text-slate-700/80",
+    "descriptor",
     "drop-shadow-sm",
   ]);
 
@@ -96,8 +81,21 @@ export const Logo = ({ className }: { className?: string }) => {
       onMouseOut={onMouseOut}
     >
       <header className={`${className} select-none`}>
-        <h1 className={headingClasses()}>Lee Mulvey</h1>
-        <div className={cvu(["overflow-hidden", "h-6", "relative"])()}>
+        <Image
+          className="wordmark-image"
+          src="/logo-leemulvey.svg"
+          width={228}
+          height={89}
+          alt="Lee Mulvey"
+        />
+        <div
+          className={cvu([
+            "overflow-hidden",
+            "h-6",
+            "relative",
+            "text-center",
+          ])()}
+        >
           <AnimatePresence mode="popLayout">
             <motion.p
               animate="show"

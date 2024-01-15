@@ -1,24 +1,16 @@
 import Link from "next/link";
 import { Logo } from "../Logo";
-import {
-  FolderKey,
-  Github,
-  MailCheck,
-  Book,
-  Twitter,
-  Layers,
-} from "lucide-react";
+import { FolderKey, Github, MailCheck, Book, Layers } from "lucide-react";
 import { cvu } from "utilities/cvu";
+import "./Sidebar.scss";
 
 const iconClasses = "text-orange/80";
 
 const linkClasses = cvu([
-  "text-neutral-100",
+  "sidebar-link",
   "p-2",
   "rounded-md",
   "transition-colors",
-  "hover:bg-slate-300/50",
-  "focus:bg-slate-300/50",
   "text-xl",
   "font-bold",
   "mb-3",
@@ -31,7 +23,7 @@ const linkClasses = cvu([
 export const Sidebar = () => {
   return (
     <aside className="max-w-full md:max-w-fit h-fit grid grid-col-1">
-      <Logo className="mb-3 px-2 pb-5 border-b border-slate-200" />
+      <Logo className="mb-3 px-2 pb-5 border-b border-light-green" />
       <Link className={`${linkClasses()} mb-5`} href="/projects">
         <FolderKey className={iconClasses} size={24} />
         Projects
@@ -40,7 +32,7 @@ export const Sidebar = () => {
         <Book className={iconClasses} size={24} />
         Blog
       </Link>
-      <div className="mb-5 border-b border-slate-200" />
+      <div className="mb-5 border-b border-light-green" />
       <a
         className={linkClasses()}
         href="mailto:hello@leemulvey.com?subject=Hey, Lee, I promise I am not sending you spam"

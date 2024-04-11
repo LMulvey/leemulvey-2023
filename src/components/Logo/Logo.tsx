@@ -44,7 +44,6 @@ export const Logo = ({ className }: { className?: string }) => {
     "p-0",
     "m-0",
     "descriptor",
-    "drop-shadow-sm",
   ]);
 
   const onMouseOver = useCallback(() => {

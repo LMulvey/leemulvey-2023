@@ -3,5 +3,6 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
     "tailwindCSS.experimental.classRegex": [
     ["cvu\\s*(?:<[\\s\\S]*?>)?\\s*\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ]
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

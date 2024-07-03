@@ -1,0 +1,71 @@
+---
+title: Stream Source
+date: 2021-11-01
+description: A webpage overlay for OBS Studio streaming to capture events, statistics, and donation levels for a charity stream in Fall 2021
+preview: /projects/stream-source.webp
+tags: typescript, esbuild, react, supabase
+---
+
+<Hero src="/projects/stream-source.webp" alt="Stream Source" />
+
+# Overview 🔎
+
+For Extra Life 2021, we were planning on playing Sea of Thieves for 24 hours straight to raise money for local Children's Hospitals and the Indian Residential School Survivor's Society (IRSSS). Sea of Thieves has some primary gameplay goals that we thought it would be fun to track alongside our donation statistics.
+
+# Problem & Solution 🤝
+
+We needed a way to display our trackers on-screen during the stream but also have a way to update our numbers easily while playing. While Extra Life provides an API that we were able to poll at a regular interval, Sea of Thieves does not provide a public API for this kind of data. While there are ways of getting it, the methods would be too finicky and we didn't want our stream to turn into a dev vlog.
+We shifted our data tracking to a free tool and Firebase competitor called Supabase. This gave us data persistence with an easy-to-use GraphQL API to read and update the data.
+Afterwards, we put together a little UI to display the data that matched the stream theme that we had selected to run!
+Process 🛣
+
+With side projects, I always try to go outside of my comfort zone a bit and explore some new tooling. Instead of bootstrapping the project with create-react-app, I opted to use esbuild and write my own little injection point for it.
+
+```ts
+async function grabBundleName() {
+  const files = await fs.readdir(directory);
+  const bundleFile = files.find((file) => file.startsWith("bundle-"));
+  return bundleFile;
+}
+```
+
+```ts
+async function buildHTML() {
+  const bundleName = await grabBundleName();
+  fs.readFile("templates/index-template.txt", "utf8", function (err, data) {
+    if (err) {
+      return console.log(err);
+    }
+    const result = data.replace(/\[BUNDLE-NAME\]/g, bundleName);
+    fs.writeFile(`docs/index.html`, result, "utf8", function (err) {
+      if (err) return console.log(err);
+    });
+  });
+}
+```
+
+By all accounts, the project is otherwise a pretty by-the-books React project. I wrote a few little service helpers for Supabase to make grabbing data at different points super easy:
+
+```tsx
+export async function getGoldProfit(setStats: SetStatsType) {
+  const { data, error } = await supabase.from("gold").select("*");
+
+  if (!error) {
+    const filteredGold = data
+      ? data.filter((gold) =>
+          dayjs(gold.created_at).isBetween(START_TIME, END_TIME),
+        )
+      : [];
+
+    const goldProfit =
+      filteredGold[filteredGold.length - 1].current_gold -
+      filteredGold[0].current_gold;
+
+    setStats((c) => ({ ...c, goldAccumulated: goldProfit }));
+  }
+}
+```
+
+# Results 🎁
+
+It's hard to measure the success of a project like this but our stream by all accounts was - we raised over $2,000 USD for charity during it and had a blast. Many people visited the stream during the 24 hours of gameplay and my hope is that the statistics on the screen gave an idea of what we had been doing during our time–and what we were doing it all for.

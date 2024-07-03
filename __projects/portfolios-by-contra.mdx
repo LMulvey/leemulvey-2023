@@ -1,0 +1,30 @@
+---
+title: Portfolios by Contra
+date: 2023-12-25
+description: Contra's first paid outing for the Portfolios product as part of Contra Pro gave users the ability to create bold, well-designed representations of their work
+preview: /projects/portfolios-by-contra.webp
+tags: typescript, node.js, graphql, next.js, stitches.js, user interface
+---
+
+<Hero src="/projects/portfolios-by-contra.webp" alt="Portfolios by Contra" />
+
+# Overview ✨
+
+Portfolios by Contra is a Contra Pro feature developed over the last year by a small team working within Contra. "Portfolios" aims to create a bold, well-designed representation of your work – both on and off of Contra – a posed many technical challenges and a boatload 🚢 of fun hurdles.
+
+# The Stack 💾
+
+We built Portfolios as a greenfield project using Next.js 12 as a foundation (plans to upgrade to v13, of course, 🤝). The designs themselves were bold and used a lot of common design threads between templates. We opted to use Stitches.js as our CSS-in-JS engine, which allowed us to define tokens and re-define them at runtime as needed based on the template + theme choices of our users.
+This made it simple to define a theme at a template-level and pass tokens throughout–whether it was to individual components or our custom WebGL Canvas elements used in a variety of templates – it was easy to tweak and pass around. This approach made it doubly easy with the introduction of customization as it was a matter of syncing a user's choices with our pre-defined theme tokens and displaying the result.
+
+<Hero
+  size="small"
+  src="/projects/portfolios-by-contra-1.webp"
+  alt="One of the themes built for Portfolios"
+/>
+
+Our backend work was powered by Node.js and GraphQL using a wide variety of custom tooling to make defining performant resolvers as easy as possible. Templates are registered within our data store and then implemented on the front end before being released to users.
+
+# The Result 🤝
+
+You can check out Portfolios by Contra as part of the Contra Pro offering and join the waitlist to be the first to try it out in early 2023 🎉

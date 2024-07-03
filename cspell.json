@@ -8,18 +8,10 @@
     "mulvey",
     "tailwind",
     "tailwindcss",
+    "rehype",
     "webp",
     "wordmark"
   ],
-  "ignorePaths": [
-    "node_modules/**",
-    "pnpm-lock.yaml",
-    "package.json"
-  ],
-  "includeRegExpList": [
-    "*/**.tsx",
-    "*/**.ts",
-    "*/**.js",
-    "*/**.json"
-  ]
+  "ignorePaths": ["node_modules/**", "pnpm-lock.yaml", "package.json"],
+  "includeRegExpList": ["*/**.tsx", "*/**.ts", "*/**.js", "*/**.json"]
 }

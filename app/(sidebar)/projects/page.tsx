@@ -42,7 +42,7 @@ export default function Projects() {
                 <p className="my-2">{project.meta.description}</p>
               </div>
 
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row flex-wrap gap-2">
                 {project.meta.tags.split(",").map((tag: string) => {
                   const cleanTag = tag.trim();
 

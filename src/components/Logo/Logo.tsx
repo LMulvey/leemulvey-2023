@@ -77,8 +77,6 @@ export const Logo = ({ className }: { className?: string }) => {
       className="focus:bg-slate-300/50 rounded-md hover:scale-105 transition-transform"
       href="/"
       onMouseOver={onMouseOver}
-      onTouchStart={onMouseOver}
-      onTouchEnd={onMouseOut}
       onMouseOut={onMouseOut}
     >
       <header className={`${className} select-none`}>

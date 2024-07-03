@@ -16,6 +16,7 @@ const lilita = Lilita_One({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://leemulvey.com/"),
   openGraph: {
     description:
       "Get to know Lee Mulvey, a talented Full-stack Engineer from Calgary, Canada. With expertise in JavaScript, TypeScript, React, Node.js, and GraphQL.",

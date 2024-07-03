@@ -9,8 +9,8 @@ import matter from "gray-matter";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import { H1 } from "components/mdx/H1/H1";
-import { Code } from "@/src/components/mdx/Code/Code";
-import { Pre } from "@/src/components/mdx/Pre/Pre";
+import { Code } from "components/mdx/Code/Code";
+import { Pre } from "components/mdx/Pre/Pre";
 
 function getPost({ slug }: { slug: string }) {
   const markdownFile = readFileSync(

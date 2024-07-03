@@ -28,10 +28,6 @@ export const Sidebar = () => {
         <FolderKey className={iconClasses} size={24} />
         Projects
       </Link>
-      {/* <Link className={linkClasses()} href="/blog">
-        <Book className={iconClasses} size={24} />
-        Blog
-      </Link> */}
       <div className="mb-5 border-b border-light-green" />
       <a
         className={linkClasses()}

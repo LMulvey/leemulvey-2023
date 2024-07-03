@@ -1,6 +1,6 @@
 "use client";
 
-import { cvu } from "@/src/utilities/cvu";
+import { cvu } from "@/utilities/cvu";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import "./Hero.scss";
-import { cvu } from "utilities/cvu";
+import { cvu } from "@/utilities/cvu";
 
 export const Hero = ({
   src,

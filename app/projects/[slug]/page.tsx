@@ -1,16 +1,16 @@
 import fs, { readFileSync } from "fs";
-import { PROJECTS_DIR } from "constants/directories";
+import { PROJECTS_DIR } from "@/constants/directories";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Head from "next/head";
-import { Hero } from "components/mdx/Hero/Hero";
+import { Hero } from "@/components/mdx/Hero/Hero";
 import React from "react";
 import path from "path";
 import matter from "gray-matter";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
-import { H1 } from "components/mdx/H1/H1";
-import { Code } from "components/mdx/Code/Code";
-import { Pre } from "components/mdx/Pre/Pre";
+import { H1 } from "@/components/mdx/H1/H1";
+import { Code } from "@/components/mdx/Code/Code";
+import { Pre } from "@/components/mdx/Pre/Pre";
 
 function getPost({ slug }: { slug: string }) {
   const markdownFile = readFileSync(

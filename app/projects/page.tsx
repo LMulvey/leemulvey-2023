@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
-import { PROJECTS_DIR } from "constants/directories";
+import { PROJECTS_DIR } from "@/constants/directories";
 
 export const metadata: Metadata = {
   title: "Projects",

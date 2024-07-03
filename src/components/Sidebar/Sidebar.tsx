@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "../Logo";
 import { FolderKey, Github, MailCheck, Book, Layers } from "lucide-react";
-import { cvu } from "utilities/cvu";
+import { cvu } from "@/utilities/cvu";
 import "./Sidebar.scss";
 
 const iconClasses = "text-orange/80";

@@ -2,8 +2,7 @@
 
 import { ReactNode } from "react";
 import { Sidebar } from "../Sidebar";
-import { cvu } from "@/src/utilities/cvu";
-
+import { cvu } from "@/utilities/cvu";
 
 export const PageLayout = ({ children }: { children: ReactNode }) => {
   const mainClasses = cvu([

@@ -1,6 +1,6 @@
 import { Lilita_One, Montserrat } from "next/font/google";
 import { PageLayout } from "@/components/PageLayout";
-import "./globals.scss";
+import "../globals.scss";
 import { cvu } from "@/utilities/cvu";
 import { Metadata } from "next";
 

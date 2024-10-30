@@ -72,7 +72,7 @@ export default function Home() {
               👋🏼
             </span>
           </h2>
-          <p className="mb-0">
+          <p style={{ margin: 0 }}>
             I&apos;m a{" "}
             {WHOAMI.map(({ id, label, emoji }) => (
               <strong key={id}>

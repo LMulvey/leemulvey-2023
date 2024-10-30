@@ -39,6 +39,8 @@ export const Sidebar = () => {
       <a
         className={linkClasses()}
         href="https://registry.jsonresume.org/lmulvey"
+        rel="noopener noreferrer"
+        target="_blank"
       >
         <BookOpenCheck className={iconClasses} size={24} />
         Resume
@@ -46,6 +48,8 @@ export const Sidebar = () => {
       <a
         className={linkClasses()}
         href="mailto:hello@leemulvey.com?subject=Hey, Lee, I promise I am not sending you spam"
+        rel="noopener noreferrer"
+        target="_blank"
       >
         <MailCheck className={iconClasses} size={24} />
         Email

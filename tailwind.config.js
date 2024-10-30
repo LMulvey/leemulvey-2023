@@ -15,6 +15,7 @@ module.exports = {
         mediumBlue: "#CCD6EB",
         orange: "#e2662c",
         salsa: "#F05D5E",
+        tan: "#f9efdb",
       },
       fontFamily: {
         heading: ["var(--font-lilita)"],

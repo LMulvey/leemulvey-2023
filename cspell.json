@@ -2,17 +2,28 @@
   "words": [
     "cpath",
     "csvg",
+    "Laravel",
     "leemulvey",
     "lilita",
     "lucide",
     "mulvey",
+    "nextjs",
     "opengraph",
+    "rehype",
     "tailwind",
     "tailwindcss",
-    "rehype",
     "webp",
     "wordmark"
   ],
-  "ignorePaths": ["node_modules/**", "pnpm-lock.yaml", "package.json"],
-  "includeRegExpList": ["*/**.tsx", "*/**.ts", "*/**.js", "*/**.json"]
+  "ignorePaths": [
+    "node_modules/**",
+    "pnpm-lock.yaml",
+    "package.json"
+  ],
+  "includeRegExpList": [
+    "*/**.tsx",
+    "*/**.ts",
+    "*/**.js",
+    "*/**.json"
+  ]
 }

@@ -49,12 +49,12 @@ export default function RootLayout({
       <head />
       <body className={bodyClasses()}>
         <PageLayout>{children}</PageLayout>
-        <footer className="font-sans text-xs pt border-t border-light-green">
+        <footer className="font-sans text-sm p-8 bg-gradient-to-b to-gray-600/30 from-transparent w-screen -ml-4">
           <p>
             <u>
               Built with love by Lee Mulvey in {new Date().getFullYear()} and
               then <em>probably lovingly ignored</em>
-            </u>{" "}
+            </u>
           </p>
           <p className="mt-0">
             Sorry. For the most up-to-date work, check my{" "}

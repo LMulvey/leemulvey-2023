@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { Logo } from "../Logo";
-import { FolderKey, Github, MailCheck, Book, Layers } from "lucide-react";
+import {
+  FolderKey,
+  Github,
+  MailCheck,
+  Layers,
+  Linkedin,
+  BookOpenCheck,
+} from "lucide-react";
 import { cvu } from "@/utilities/cvu";
 import "./Sidebar.scss";
 
@@ -31,10 +38,26 @@ export const Sidebar = () => {
       <div className="mb-5 border-b border-light-green" />
       <a
         className={linkClasses()}
+        href="https://registry.jsonresume.org/lmulvey"
+      >
+        <BookOpenCheck className={iconClasses} size={24} />
+        Resume
+      </a>
+      <a
+        className={linkClasses()}
         href="mailto:hello@leemulvey.com?subject=Hey, Lee, I promise I am not sending you spam"
       >
         <MailCheck className={iconClasses} size={24} />
         Email
+      </a>
+      <a
+        className={linkClasses()}
+        href="https://www.linkedin.com/in/leemulvey/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Linkedin className={iconClasses} size={24} />
+        LinkedIn
       </a>
       <a
         className={linkClasses()}

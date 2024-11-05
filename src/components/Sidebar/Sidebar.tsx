@@ -7,6 +7,7 @@ import {
   Layers,
   Linkedin,
   BookOpenCheck,
+  Cloud,
 } from "lucide-react";
 import { cvu } from "@/utilities/cvu";
 import "./Sidebar.scss";
@@ -80,6 +81,15 @@ export const Sidebar = () => {
       >
         <Layers className={iconClasses} size={24} />
         StackOverflow
+      </a>
+      <a
+        className={linkClasses()}
+        href="https://bsky.app/profile/leemulvey.bsky.social"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <Cloud className={iconClasses} size={24} />
+        Bluesky
       </a>
     </aside>
   );

@@ -84,7 +84,7 @@ export const Sidebar = () => {
       </a>
       <a
         className={linkClasses()}
-        href="https://bsky.app/profile/leemulvey.bsky.social"
+        href="https://bsky.app/profile/leemulvey.com"
         rel="noopener noreferrer"
         target="_blank"
       >

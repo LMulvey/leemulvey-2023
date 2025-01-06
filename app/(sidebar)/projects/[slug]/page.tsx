@@ -27,7 +27,8 @@ function getPost({ slug }: { slug: string }) {
   };
 }
 
-export default function ProjectPage({ params }: any) {
+export default async function ProjectPage(props: any) {
+  const params = await props.params;
   const source = getPost(params);
   const options = {
     mdxOptions: {
@@ -41,7 +42,6 @@ export default function ProjectPage({ params }: any) {
       <Head>
         <title>{source.frontMatter.title as string}</title>
       </Head>
-      {/* @ts-expect-error Server Component*/}
       <MDXRemote
         source={source.content}
         components={{
@@ -66,7 +66,8 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata(props: any) {
+  const params = await props.params;
   const blog = getPost(params);
 
   return {

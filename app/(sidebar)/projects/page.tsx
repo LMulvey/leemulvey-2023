@@ -6,7 +6,7 @@ import Link from "next/link";
 import { PROJECTS_DIR } from "@/constants/directories";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: "Projects"
 };
 
 export default function Projects() {

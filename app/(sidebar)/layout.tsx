@@ -2,7 +2,8 @@ import { Lilita_One, Montserrat } from "next/font/google";
 import { PageLayout } from "@/components/PageLayout";
 import "../globals.scss";
 import { cvu } from "@/utilities/cvu";
-import { Metadata } from "next";
+import { type Metadata } from "next";
+import { Footer } from "@/components/Footer/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -20,7 +21,6 @@ export const metadata: Metadata = {
   openGraph: {
     description:
       "Get to know Lee Mulvey, a talented Full-stack Engineer from Calgary, Canada. With expertise in JavaScript, TypeScript, React, Node.js, and GraphQL.",
-    images: ["/opengraph-image.png"],
   },
   title: {
     default: "Lee Mulvey - Full-stack Engineer based in Calgary, Alberta",
@@ -49,26 +49,7 @@ export default function RootLayout({
       <head />
       <body className={bodyClasses()}>
         <PageLayout>{children}</PageLayout>
-        <footer className="font-sans text-sm p-8">
-          <p>
-            <u>
-              Built with love by Lee Mulvey in {new Date().getFullYear()} and
-              then <em>probably lovingly ignored</em>
-            </u>
-          </p>
-          <p className="mt-0">
-            Sorry. For the most up-to-date work, check my{" "}
-            <a
-              className="underline"
-              href="https://github.com/lmulvey"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              GitHub
-            </a>{" "}
-            or don&apos;t hesitate to get in touch ❤️
-          </p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

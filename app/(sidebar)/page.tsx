@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ReactNode } from "react";
 
 const WHOAMI: { id: string; label: ReactNode; emoji: ReactNode }[] = [
@@ -103,8 +104,8 @@ export default function Home() {
         use the right tools for the job.
       </p>
       <p>
-        Check out the <a href="/projects">projects</a> I have worked on, or dig
-        into my code on{" "}
+        Check out the <Link href="/projects">projects</Link> I have worked on,
+        or dig into my code on{" "}
         <a
           href="https://github.com/lmulvey"
           target="_blank"

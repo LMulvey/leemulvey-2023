@@ -1,0 +1,27 @@
+---
+title: Finals Roulette
+date: 2025-01-25
+description: Built a custom application for generating random builds for the game, THE FINALS.
+preview: /projects/finals-roulette.webp
+tags: typescript, vike, vite, react, tailwind
+---
+
+<a
+  aria-label="Finals Roulette"
+  href="https://finalsroulette.com"
+  target="_blank"
+>
+  <Hero src="/projects/finals-roulette.webp" alt="Finals Roulette" />
+</a>
+
+# Overview
+
+As a fan of the game, THE FINALS, I wanted to create a website that allowed users to randomly roll builds. In addition, I wanted to encourage users to use equipment that had recently been adjusted by the developers to ensure the game always felt fresh.
+
+# The Stack 💾
+
+I imagined this being a very simple project, so, as a result, I used Vite, Vike (for SSR so I could serve dynamic metadata like Open Graph data), React, Tailwind, and TypeScript.
+One of the unique aspects of the project was the ability to generate a random, cheeky name alongside the build and to be able to share the build with others using a custom URL.
+As a result, I wanted the Open Graph data to reflect the name and image of the build. This required me to take the project a step further and take advantage of server-side rendering so I could properly return dynamic data at request time.
+
+Over time, I added a ton of features to the project like build saving, recent build memory, re-rolling specific aspects, locking specific pieces of equipment, and a ton more. It was a blast to build and hopefully something that I'll continue to update.

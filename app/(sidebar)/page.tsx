@@ -44,12 +44,9 @@ const TECH: { id: string; label: string }[] = [
     label: "Vercel + Vercel AI",
   },
   { id: "tailwind", label: "Tailwind CSS" },
-  {
-    id: "php",
-
-    label: "PHP",
-  },
-  { id: "laravel", label: "Laravel" },
+  { id: "web3-tools", label: "Web3 tooling" },
+  { id: "wagmi", label: "Wagmi" },
+  { id: "viem", label: "Viem" },
 ];
 
 export default function Home() {

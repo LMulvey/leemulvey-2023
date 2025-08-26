@@ -58,7 +58,7 @@ export default function Home() {
 
   return (
     <article className="prose prose-green lg:prose-lg">
-      <div className="flex flex-row items-center gap-8 p-4 border border-black/20 bg-black/10 rounded-lg mb-8">
+      <div className="flex flex-col md:flex-row items-center gap-8 p-4 border border-black/20 bg-black/10 rounded-lg mb-8">
         <Image
           className="rounded-md mt-0 mb-0 lg:mt-0 lg:mb-0"
           src="/lee.webp"

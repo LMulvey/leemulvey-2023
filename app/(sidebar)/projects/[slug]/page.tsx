@@ -42,17 +42,19 @@ export default async function ProjectPage(props: any) {
       <Head>
         <title>{source.frontMatter.title as string}</title>
       </Head>
-      <MDXRemote
-        source={source.content}
-        components={{
-          code: Code,
-          h1: H1,
-          Hero,
-          pre: Pre,
-        }}
-        // @ts-expect-error Options format is correct and works
-        options={options}
-      />
+      <section className="prose prose-green lg:prose-md">
+        <MDXRemote
+          source={source.content}
+          components={{
+            code: Code,
+            h1: H1,
+            Hero,
+            pre: Pre,
+          }}
+          // @ts-expect-error Options format is correct and works
+          options={options}
+        />
+      </section>
     </div>
   );
 }

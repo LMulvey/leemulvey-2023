@@ -1,7 +1,7 @@
 .sidebar-link {
-  color: #638889;
+  @apply text-lightGreen border border-transparent transition-colors;
 
   &:hover {
-    background-color: #F9EFDB;
+    @apply bg-gradient-to-tr from-surface1 to-surface3 border border-surface3/40;
   }
 }

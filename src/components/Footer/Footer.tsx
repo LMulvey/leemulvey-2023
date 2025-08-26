@@ -1,11 +1,11 @@
-"use server";
+const currentYear = new Date().getFullYear();
 
-export const Footer = async () => {
+export const Footer = () => {
   return (
-    <footer className="font-sans text-sm p-8">
+    <footer className="font-sans text-sm pb-4 absolute bottom-0 mt-8 w-full px-4 border-t border-t-surface3 ">
       <p>
         <u>
-          Built with love by Lee Mulvey in {new Date().getFullYear()} and then{" "}
+          Built with love by Lee Mulvey in {currentYear} and then{" "}
           <em>probably lovingly ignored</em>
         </u>
       </p>

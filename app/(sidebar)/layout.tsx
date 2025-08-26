@@ -3,7 +3,6 @@ import { PageLayout } from "@/components/PageLayout";
 import "../globals.scss";
 import { cvu } from "@/utilities/cvu";
 import { type Metadata } from "next";
-import { Footer } from "@/components/Footer/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -34,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const bodyClasses = cvu([
-    "text-dark-green",
+    "text-darkGreen",
     montserrat.variable,
     lilita.variable,
     "font-sans",
@@ -49,7 +48,6 @@ export default function RootLayout({
       <head />
       <body className={bodyClasses()}>
         <PageLayout>{children}</PageLayout>
-        <Footer />
       </body>
     </html>
   );

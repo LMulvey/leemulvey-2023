@@ -3,40 +3,35 @@
 import { cvu } from "@/utilities/cvu";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./Logo.scss";
 import Image from "next/image";
 
 const descriptors = [
   "Weird Dad 👨🏼‍💻",
-  "Super Weird Dad 💁🏼‍♂️",
   "Bike Dad 🚲",
-  "Ask Me About GraphQL 🤓",
   "Secretly Loves AWS 🌤️",
   "Full Stacker 🥞",
   "Description Writer 📝",
-  "Edmonton > Calgary 🌁",
   "Lover of All Love 🏳️‍🌈",
-  "Jazz Hands 🤗",
-  "Manatee Researcher 🐋",
   "Five-time 10km Runner 🏃🏼‍♂️",
   "Sweat of the Seas 🏴‍☠️",
+  "Malenia now knows defeat 🗡️",
 ];
 
 const randomDescriptor = (currentDescriptor?: string): string => {
-  const descriptor =
-    descriptors[Math.floor(Math.random() * descriptors.length)];
-
-  if (descriptor === currentDescriptor) {
-    return randomDescriptor(currentDescriptor);
-  }
-
-  return descriptor;
+  const filteredDescriptors = descriptors.filter(
+    (descriptor) => descriptor !== currentDescriptor,
+  );
+  const randomIndex = Math.floor(Math.random() * filteredDescriptors.length);
+  const newDescriptor = filteredDescriptors[randomIndex];
+  return newDescriptor;
 };
 
-let interval: ReturnType<typeof setInterval> | undefined;
-
 export const Logo = ({ className }: { className?: string }) => {
+  const interval = useRef<ReturnType<typeof setInterval> | undefined>(
+    undefined,
+  );
   const [descriptor, setDescriptor] = useState(descriptors[0]);
   const descriptorClasses = cvu([
     "font-mono",
@@ -47,18 +42,18 @@ export const Logo = ({ className }: { className?: string }) => {
   ]);
 
   const onMouseOver = useCallback(() => {
-    if (interval) {
-      clearInterval(interval);
+    if (interval.current) {
+      clearInterval(interval.current);
     }
 
-    interval = setInterval(() => {
+    interval.current = setInterval(() => {
       setDescriptor(randomDescriptor());
-    }, 1_200);
+    }, 800);
   }, []);
 
   const onMouseOut = useCallback(() => {
-    if (interval) {
-      clearInterval(interval);
+    if (interval.current) {
+      clearInterval(interval.current);
     }
   }, []);
 
@@ -66,15 +61,15 @@ export const Logo = ({ className }: { className?: string }) => {
     // no-op
     return () => {
       // clear interval on unmount - helps with hot reloading
-      if (interval) {
-        clearInterval(interval);
+      if (interval.current) {
+        clearInterval(interval.current);
       }
     };
   }, []);
 
   return (
     <Link
-      className="focus:bg-slate-300/50 rounded-md hover:scale-105 transition-transform"
+      className="rounded-md hover:scale-105 transition-transform"
       href="/"
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}

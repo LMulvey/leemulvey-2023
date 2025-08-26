@@ -2,13 +2,14 @@
   "words": [
     "alora",
     "Bluesky",
+    "clsx",
     "cpath",
     "csvg",
-    "clsx",
     "Laravel",
     "leemulvey",
     "lilita",
     "lucide",
+    "Malenia",
     "Mikaël",
     "mulvey",
     "Neves",
@@ -21,6 +22,15 @@
     "webp",
     "wordmark"
   ],
-  "ignorePaths": ["node_modules/**", "pnpm-lock.yaml", "package.json"],
-  "includeRegExpList": ["*/**.tsx", "*/**.ts", "*/**.js", "*/**.json"]
+  "ignorePaths": [
+    "node_modules/**",
+    "pnpm-lock.yaml",
+    "package.json"
+  ],
+  "includeRegExpList": [
+    "*/**.tsx",
+    "*/**.ts",
+    "*/**.js",
+    "*/**.json"
+  ]
 }

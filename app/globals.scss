@@ -4,7 +4,6 @@
 
 html,
 body {
-  font-size: "137.5%";
   -webkit-font-smoothing: antialiased;
   min-width: 375px;
 }
@@ -16,9 +15,9 @@ body {
 }
 
 body {
+  @apply bg-gradient-to-b from-surface2 to-surface1;
   margin: 0;
-  font-size: 18px;
-  background: linear-gradient(#f9efdb, rgb(216, 199, 165));
+  font-size: 16px;
   min-height: 100vh;
 }
 
@@ -71,7 +70,6 @@ code {
 
 .layout--container {
   margin: 0 auto;
-  padding: 64px 16px 0px 16px;
   min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;

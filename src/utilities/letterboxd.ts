@@ -74,7 +74,7 @@ function toPosterUrl(descriptionRaw: string) {
 }
 
 export async function getLetterboxdReviews({
-  limit = 4,
+  limit = 25,
   username = "LeeMulvey",
 }: {
   limit?: number;

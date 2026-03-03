@@ -10,8 +10,32 @@ export const metadata: Metadata = {
   title: "Blog",
 };
 
+const ITEMS_PER_PAGE = 8;
+
 function normalizeTag(tag: string) {
   return tag.trim().toLowerCase();
+}
+
+function buildBlogHref({
+  page,
+  tag,
+}: {
+  page?: number;
+  tag?: string;
+}) {
+  const params = new URLSearchParams();
+
+  if (tag) {
+    params.set("tag", tag);
+  }
+
+  if (page && page > 1) {
+    params.set("page", String(page));
+  }
+
+  const queryString = params.toString();
+
+  return queryString ? `/blog?${queryString}` : "/blog";
 }
 
 export default async function Blog(props: any) {
@@ -19,6 +43,11 @@ export default async function Blog(props: any) {
   const selectedTagParam = Array.isArray(searchParams?.tag)
     ? searchParams.tag[0]
     : searchParams?.tag;
+  const pageParam = Array.isArray(searchParams?.page)
+    ? searchParams.page[0]
+    : searchParams?.page;
+  const parsedPage = Number.parseInt(pageParam ?? "1", 10);
+  const currentPage = Number.isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage;
   const selectedTag =
     typeof selectedTagParam === "string" ? normalizeTag(selectedTagParam) : "";
 
@@ -73,6 +102,16 @@ export default async function Blog(props: any) {
         item.tags.some((tag) => normalizeTag(tag) === selectedTag),
       )
     : feedItems;
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredFeedItems.length / ITEMS_PER_PAGE),
+  );
+  const safePage = Math.min(currentPage, totalPages);
+  const startIndex = (safePage - 1) * ITEMS_PER_PAGE;
+  const paginatedFeedItems = filteredFeedItems.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
 
   const cardContainerClasses =
     "h-[312px] p-5 rounded-lg bg-gradient-to-tr from-surface2 to-darkGreen/50 flex flex-col justify-between align-middle gap-3 border border-lightGreen";
@@ -85,7 +124,7 @@ export default async function Blog(props: any) {
 
       <div className="not-prose mt-4 mb-8 flex flex-row flex-wrap gap-2 items-center">
         <Link
-          href="/blog"
+          href={buildBlogHref({})}
           className={`text-xs leading-4 h-min font-semibold px-2 py-0.5 rounded-md shadow-sm no-underline ${
             !selectedTag
               ? "bg-lightGreen text-surface3"
@@ -100,7 +139,7 @@ export default async function Blog(props: any) {
           return (
             <Link
               key={tag}
-              href={`/blog?tag=${encodeURIComponent(tag)}`}
+              href={buildBlogHref({ page: 1, tag })}
               className={`text-xs leading-4 h-min font-semibold px-2 py-0.5 rounded-md shadow-sm no-underline ${
                 isActive
                   ? "bg-lightGreen text-surface3"
@@ -114,7 +153,7 @@ export default async function Blog(props: any) {
       </div>
 
       <div className="py-2 grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {filteredFeedItems.map((item) => {
+        {paginatedFeedItems.map((item) => {
           if (item.type === "blog") {
             return (
               <Link
@@ -233,6 +272,44 @@ export default async function Blog(props: any) {
           </p>
         ) : null}
       </div>
+
+      {filteredFeedItems.length > 0 ? (
+        <div className="not-prose mt-6 flex items-center justify-between gap-3">
+          <Link
+            href={buildBlogHref({
+              page: safePage - 1,
+              tag: selectedTagParam,
+            })}
+            aria-disabled={safePage <= 1}
+            className={`text-sm font-semibold no-underline px-3 py-1 rounded-md border ${
+              safePage <= 1
+                ? "pointer-events-none opacity-50 border-surface3 text-lightGreen"
+                : "border-lightGreen text-lightGreen"
+            }`}
+          >
+            ← Previous
+          </Link>
+
+          <p className="text-sm text-lightGreen m-0">
+            Page {safePage} of {totalPages}
+          </p>
+
+          <Link
+            href={buildBlogHref({
+              page: safePage + 1,
+              tag: selectedTagParam,
+            })}
+            aria-disabled={safePage >= totalPages}
+            className={`text-sm font-semibold no-underline px-3 py-1 rounded-md border ${
+              safePage >= totalPages
+                ? "pointer-events-none opacity-50 border-surface3 text-lightGreen"
+                : "border-lightGreen text-lightGreen"
+            }`}
+          >
+            Next →
+          </Link>
+        </div>
+      ) : null}
     </section>
   );
 }

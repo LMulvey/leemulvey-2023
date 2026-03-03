@@ -16,13 +16,7 @@ function normalizeTag(tag: string) {
   return tag.trim().toLowerCase();
 }
 
-function buildBlogHref({
-  page,
-  tag,
-}: {
-  page?: number;
-  tag?: string;
-}) {
+function buildBlogHref({ page, tag }: { page?: number; tag?: string }) {
   const params = new URLSearchParams();
 
   if (tag) {
@@ -47,7 +41,8 @@ export default async function Blog(props: any) {
     ? searchParams.page[0]
     : searchParams?.page;
   const parsedPage = Number.parseInt(pageParam ?? "1", 10);
-  const currentPage = Number.isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage;
+  const currentPage =
+    Number.isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage;
   const selectedTag =
     typeof selectedTagParam === "string" ? normalizeTag(selectedTagParam) : "";
 

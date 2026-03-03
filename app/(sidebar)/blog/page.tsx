@@ -33,7 +33,7 @@ export default async function Blog(props: any) {
     };
   });
   const letterboxdReviews = await getLetterboxdReviews({
-    limit: 4,
+    limit: 25,
     username: "LeeMulvey",
   });
 

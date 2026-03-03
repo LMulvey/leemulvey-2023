@@ -1,5 +1,5 @@
 import fs, { readFileSync } from "fs";
-import { PROJECTS_DIR } from "@/constants/directories";
+import { BLOG_DIR } from "@/constants/directories";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Head from "next/head";
 import { Hero } from "@/components/mdx/Hero/Hero";
@@ -15,7 +15,7 @@ import Link from "next/link";
 
 function getPost({ slug }: { slug: string }) {
   const markdownFile = readFileSync(
-    path.join(PROJECTS_DIR, slug + ".mdx"),
+    path.join(BLOG_DIR, slug + ".mdx"),
     "utf-8",
   );
 
@@ -28,12 +28,12 @@ function getPost({ slug }: { slug: string }) {
   };
 }
 
-export default async function ProjectPage(props: any) {
+export default async function BlogPostPage(props: any) {
   const params = await props.params;
   const source = getPost(params);
   const options = {
     mdxOptions: {
-      rehypePlugins: [[rehypePrettyCode, { theme: "solarized-light" }]],
+      rehypePlugins: [[rehypePrettyCode]],
       remarkPlugins: [remarkGfm],
     },
   };
@@ -44,13 +44,12 @@ export default async function ProjectPage(props: any) {
         <title>{source.frontMatter.title as string}</title>
       </Head>
       <section className="prose prose-green lg:prose-md">
-        <Link href="/projects" className="no-underline text-sm font-semibold">
-          ← Back to projects
+        <Link href="/blog" className="no-underline text-sm font-semibold">
+          ← Back to blog
         </Link>
         <MDXRemote
           source={source.content}
           components={{
-            code: Code,
             h1: H1,
             Hero,
             pre: Pre,
@@ -62,8 +61,9 @@ export default async function ProjectPage(props: any) {
     </div>
   );
 }
+
 export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(PROJECTS_DIR));
+  const files = fs.readdirSync(path.join(BLOG_DIR));
 
   const paths = files.map((filename) => ({
     slug: filename.replace(".mdx", ""),

@@ -1,0 +1,47 @@
+---
+date: "2026-03-03"
+title: "DeFi Integration Learnings"
+description: "Integrating DeFi protocols into a dApp came with a few learnings."
+tags: evm, avalanche, benqi, aave, defi
+preview: "/blog/defi-learnings.jpg"
+---
+
+<Hero src="/blog/defi-learnings.jpg" alt="DeFi Integration Learnings" />
+
+# DeFi Integration Learnings
+
+Integrating DeFi protocols into a dApp came with a few learnings. I won't go into the specifics of the project, but I wanted to share some of the things I learned along the way that may be helpful for others looking to do something similar.
+
+## Read the documentation
+
+Some protocols have _very_ good documentation. Others have, uh, not so great documentation. This means that you have to be ready to
+not only dive into the docs but dive into the Solidity contracts themselves.
+
+In my experience, protocols and lending pools either use commonly established contracts (typically a fork) AND/OR have them outright
+open-sourced on Github. This gives you an easy path to reading the code and understanding exactly how the protocol works.
+
+Never read Solidity code? Don't worry – with a basic understanding of JavaScript (or really any programming language), you should
+be able to reason about the contracts themselves. It doesn't mean you could necessarily go bang out a Solidity contract from scratch
+but you should be able to understand the flow of the code and how the different pieces interact with each other. This is crucial when integrating with a protocol as you need to understand how to interact with it and what the expected inputs/outputs are.
+
+## Use a bit of help from your friend AI
+
+Look, it's 2026 and I won't downplay the impact that AI has had on our industry. When it comes to integrating these protocols, AI can be super
+helpful with explaining the protocol and underlying contracts. HOWEVER, I **strongly recommend** that you double and triple check the work.
+
+AI is known to hallucinate and make quite a few assumptions. When you're dealing with people's money, you don't want to take chances. AI can get you most of the way there, however,
+in my experience, it still needed a helping hand to get all the calculations and integrations correct.
+
+## Test, test, test
+
+Most protocols have their own dashboards to test against - use this as your source of truth for calculations. Make sure values, conversions, and APYs are showing up as expected.
+This is made easy as you have a control group to compare to as you build out your integration. If something is off, you can be sure that it's an issue with your code and not the protocol itself.
+
+## Don't be afraid to ask for help
+
+One of the best parts of working in crypto is the developer community. Most protocols, chains, dApps, and tools have active and engaged communities – typically on Discord.
+If you're brave, you can check out X as well for assistance. But, in my experience, Discord is the best place to get help. You can ask questions, share your progress, and get feedback from other developers who have likely faced similar challenges.
+
+## The TL;dr
+
+Integrating DeFi protocols can be a bit daunting at first, but with the right approach and resources, it can be a rewarding experience. Just remember to read the documentation, use AI as a tool (but don't rely on it entirely), test your integration thoroughly, and don't be afraid to ask for help when you need it. Happy coding!

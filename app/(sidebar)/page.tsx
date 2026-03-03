@@ -102,6 +102,7 @@ export default function Home() {
       </p>
       <p>
         Check out the <Link href="/projects">projects</Link> I have worked on,
+        read the occasional <Link href="/blog">blog post</Link>,
         or dig into my code on{" "}
         <a
           href="https://github.com/lmulvey"

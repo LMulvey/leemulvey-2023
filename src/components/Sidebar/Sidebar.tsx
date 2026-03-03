@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Logo } from "../Logo";
 import {
   FolderKey,
+  NotebookPen,
   Github,
   MailCheck,
   Layers,
@@ -130,12 +131,20 @@ export const Sidebar = () => {
     <>
       <Logo className="mb-3 px-2 pb-5 border-b border-lightGreen" />
       <Link
-        className={`${linkClasses()} bg-gradient-to-tr from-darkGreen/20 p-4 mb-4 to-surface2 border border-surface3 shadow-sm`}
+        className={`${linkClasses()} bg-gradient-to-tr from-darkGreen/40 px-4 py-2 mb-1 to-surface2 border border-surface3 shadow-sm`}
         href="/projects"
         onClick={() => setOpen(false)}
       >
         <FolderKey className={iconClasses} size={24} />
         Projects
+      </Link>
+      <Link
+        className={`${linkClasses()} bg-gradient-to-tr from-darkGreen/40 px-4 py-2 mb-4 to-surface2 border border-surface3 shadow-sm`}
+        href="/blog"
+        onClick={() => setOpen(false)}
+      >
+        <NotebookPen className={iconClasses} size={24} />
+        Blog
       </Link>
       <a
         className={linkClasses()}

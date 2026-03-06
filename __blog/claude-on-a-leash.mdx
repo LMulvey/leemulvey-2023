@@ -1,0 +1,50 @@
+---
+date: "2026-03-06"
+title: "Keep your Claude on a leash"
+description: "Vibe coding is all the rage but targeted improvements is the best way to use your AI buddy"
+tags: development, ai, claude, agentic coding, productivity
+preview: "/blog/claude-on-a-leash.jpg"
+---
+
+<Hero src="/blog/claude-on-a-leash.jpg" alt="Keep your Claude on a leash" />
+
+I'll get it out of the way – agentic coding is the future. But, in my experience, it still works best when you have a strong foundation. Let me explain.
+
+## What is agentic coding?
+
+Agentic coding is the practice of using AI agents to assist with coding tasks. This can include things like code generation, code review, and even debugging. The idea is that by using AI agents, you can increase your productivity and efficiency as a developer.
+
+## Why keep your Claude on a leash?
+
+Metaphorically, of course. And not to single out Claude – this applies with most AI agents that I've used (so far). Yes, you can absolutely try to vibe code things. However, if you ask Claude to "build a blog", its going to go crazy. This is the basis of [spec-driven-development](https://github.com/github/spec-kit).
+However, I find that Matt Pocock explained it best with [tracer bullets](https://www.aihero.dev/tracer-bullets).
+
+When you give Claude vertical slices of your application to work on, it's much better at observing the results and building a complete product. It gives Claude a chance to build things in pieces, confirm that they work, and move on. When you give it too wide of a scope, it'll struggle to connect the pieces.
+
+## An example
+
+I recently added a dark/light mode toggle to this very website! When I first explored it, I asked Claude to do simply that: "Add a light mode and a theme toggle to the site". And oh boy did it ever struggle.
+This was because of a few reasons:
+
+1. My use of theme tokens was all over the place making it hard for Claude to get a good idea of which colors were used where. It doesn't know what that --theme-darkGreen and `rgb(149 174 176)` are the same.
+2. It struggled to understand the intent of what the theme toggle should do and where it should live.
+3. It struggled to understand the scope of the work and how to break it down into pieces.
+
+When I broke it down into smaller pieces, it was much easier for Claude to understand the intent and scope of the work. I instead asked it to:
+
+1. Create unified, generic theme tokens and remove specific color-based theme tokens
+2. Grep all one-off usages of colors and align it with theme tokens
+
+At this point, I had a human hand in verifying the colors and having a bit of course correction. It's important to note that in a responsible use of AI, this is still absolutely required.
+
+3. Add a light mode based on the dark mode tokens
+4. Add a theme toggle
+
+From here, it did a pretty good job of building out individual pieces and getting to the desired final product. But, it needed that breakdown.
+
+## Your agent is your junior developer
+
+If you've ever helped onboard a junior dev, the BEST thing you can do for them is help with the estimation process. It's very easy to get overwhelmed with large feature asks. But, once you break it down into smaller pieces, the problem becomes much easier to reason about.
+And proper estimation and breaking up of tasks is a hard skill to master – I still haven't mastered it to this day!
+
+Treat Claude as your junior. Break things into easy pieces to reason about that still help you reach your final goal. The result will be much better. But, at the end of the day, that human hand is still required – and that's a great thing for us in the industry 😅

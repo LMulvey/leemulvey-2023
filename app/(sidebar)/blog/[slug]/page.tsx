@@ -58,8 +58,8 @@ export default async function BlogPostPage(props: any) {
           ← Back to blog
         </Link>
 
-        <header className="not-prose mt-6 mb-10 p-6 rounded-xl bg-gradient-to-tr from-card to-card-elevated border border-border">
-          <h1 className="m-0 text-3xl lg:text-4xl font-bold text-foreground leading-tight">
+        <header className="not-prose mt-6 mb-10">
+          <h1 className="m-0 text-3xl lg:text-5xl font-bold text-foreground leading-tight">
             {title}
           </h1>
 
@@ -69,7 +69,7 @@ export default async function BlogPostPage(props: any) {
             </p>
           ) : null}
 
-          <div className="mt-4 flex flex-col gap-3">
+          <div className="mt-2 flex flex-col gap-3">
             {date ? (
               <p className="m-0 text-sm italic text-foreground-muted">
                 Posted on{" "}
@@ -124,9 +124,46 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: any) {
   const params = await props.params;
   const blog = getPost(params);
+  const title = (blog.frontMatter.title as string) ?? "Blog Post";
+  const description = (blog.frontMatter.description as string) ?? "";
+  const preview = (blog.frontMatter.preview as string | undefined) ?? "/og";
+  const tags = ((blog.frontMatter.tags as string | undefined) ?? "")
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+  const publishedDate = blog.frontMatter.date
+    ? new Date(blog.frontMatter.date as string).toISOString()
+    : undefined;
+  const ogImage = preview.startsWith("http")
+    ? preview
+    : `https://leemulvey.com${preview}`;
+  const canonicalUrl = `https://leemulvey.com/blog/${blog.slug}`;
 
   return {
-    description: blog.frontMatter.description,
-    title: blog.frontMatter.title,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    description,
+    openGraph: {
+      description,
+      images: [
+        {
+          alt: title,
+          url: ogImage,
+        },
+      ],
+      publishedTime: publishedDate,
+      tags,
+      title,
+      type: "article",
+      url: canonicalUrl,
+    },
+    title,
+    twitter: {
+      card: "summary_large_image",
+      description,
+      images: [ogImage],
+      title,
+    },
   };
 }

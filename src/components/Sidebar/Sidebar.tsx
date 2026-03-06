@@ -19,6 +19,7 @@ import { cvu } from "@/utilities/cvu";
 import "./Sidebar.scss";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { LogoSVG } from "../Logo/LogoSVG";
 
 const iconClasses = "text-highlight/80";
 
@@ -110,7 +111,7 @@ const overlayAsideClasses = cvu(
     "md:w-72",
     "shadow-lg",
     "backdrop-blur-md",
-    "relative",
+    "md:relative",
   ],
   {
     variants: {
@@ -274,12 +275,11 @@ export const Sidebar = () => {
           background: scrolled ? "scrolled" : "none",
         })}
       >
-        <Image
-          className="mobile-logo-image"
-          src="/logo-leemulvey.svg"
+        <LogoSVG
+          pathFillClass="fill-background"
+          outlineFillClass="fill-foreground-muted"
           width={114}
           height={44}
-          alt="Lee Mulvey"
         />
         <button
           className="flex items-center justify-center bg-card border border-border-muted rounded-md p-2 shadow-lg"

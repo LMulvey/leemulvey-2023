@@ -31,6 +31,16 @@ function getPost({ slug }: { slug: string }) {
 export default async function BlogPostPage(props: any) {
   const params = await props.params;
   const source = getPost(params);
+  const title = (source.frontMatter.title as string) ?? "Untitled";
+  const description = (source.frontMatter.description as string) ?? "";
+  const date = source.frontMatter.date
+    ? new Date(source.frontMatter.date as string)
+    : null;
+  const tags = ((source.frontMatter.tags as string | undefined) ?? "")
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+
   const options = {
     mdxOptions: {
       rehypePlugins: [[rehypePrettyCode]],
@@ -41,12 +51,51 @@ export default async function BlogPostPage(props: any) {
   return (
     <div className="mb-80">
       <Head>
-        <title>{source.frontMatter.title as string}</title>
+        <title>{title}</title>
       </Head>
       <section className="prose prose-green lg:prose-md">
         <Link href="/blog" className="no-underline text-sm font-semibold">
           ← Back to blog
         </Link>
+
+        <header className="not-prose mt-6 mb-10 p-6 rounded-xl bg-gradient-to-tr from-card to-card-elevated border border-border">
+          <h1 className="m-0 text-3xl lg:text-4xl font-bold text-foreground leading-tight">
+            {title}
+          </h1>
+
+          {description ? (
+            <p className="mt-3 mb-0 text-foreground-muted text-base">
+              {description}
+            </p>
+          ) : null}
+
+          <div className="mt-4 flex flex-col gap-3">
+            {date ? (
+              <p className="m-0 text-sm italic text-foreground-muted">
+                Posted on{" "}
+                {date.toLocaleDateString(undefined, {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </p>
+            ) : null}
+
+            {tags.length > 0 ? (
+              <div className="flex flex-row flex-wrap gap-2 items-start">
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs h-min font-semibold bg-accent text-accent-foreground px-2.5 py-1 rounded-md shadow-sm"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </header>
+
         <MDXRemote
           source={source.content}
           components={{

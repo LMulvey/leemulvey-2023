@@ -11,8 +11,6 @@ preview: "/blog/serverless-appsync-mapping-templates.jpg"
   alt="API Gateway - Mapping Templates with Serverless"
 />
 
-# API Gateway - Mapping Templates with Serverless
-
 As previously discussed in my [other Serverless post](https://leemulvey.com/blog/aws-appsync-learnings/), _Mapping Templates_ are a way for AWS services to prepare requests for data sources and prepare the response to the API consumer. I ran across a project recently where I was tasked with using an API Gateway to hit an AWS Lambda function, however, that gateway needed to forward query parameters to the Lambda so it could be processed.
 
 This task would be easy in enough in most cases, however, with AWS, you must use Apache's Velocity Templates to formuate a Mapping Template for AWS. You can generate these (somewhat) through the AWS console, and you can certainly modify them in there. BUT! The point of Serverless is to avoid the console, make it easy to deploy, and allow more hands in the pot. In my particular use case, I needed to develop a POC on my own AWS account and then have it deployed on the clients. It's

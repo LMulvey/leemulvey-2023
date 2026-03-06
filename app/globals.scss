@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root,
+[data-theme="dark"],
+.dark {
   --body-font: "Montserrat", sans-serif;
   --heading-font: "Lilita One", cursive;
 
@@ -21,6 +23,24 @@
   --color-accent-foreground: 40 40 40;
   --color-highlight: 251 146 60;
   --color-overlay: 0 0 0;
+}
+
+[data-theme="light"] {
+  --color-background: 246 247 249;
+  --color-background-elevated: 232 236 240;
+  --color-card: 255 255 255;
+  --color-card-elevated: 241 245 249;
+  --color-foreground: 15 23 42;
+  --color-foreground-muted: 71 85 105;
+  --color-foreground-strong: 30 41 59;
+  --color-link: 8 145 178;
+  --color-link-hover: 14 116 144;
+  --color-border: 148 163 184;
+  --color-border-muted: 203 213 225;
+  --color-accent: 14 165 233;
+  --color-accent-foreground: 248 250 252;
+  --color-highlight: 217 119 6;
+  --color-overlay: 15 23 42;
 }
 
 html,
@@ -98,4 +118,40 @@ code {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 260ms;
+    animation-timing-function: ease;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: theme-fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: theme-fade-in;
+  }
+}
+
+@keyframes theme-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes theme-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }

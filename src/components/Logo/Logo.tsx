@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./Logo.scss";
 import Image from "next/image";
+import { LogoSVG } from "./LogoSVG";
 
 const descriptors = [
   "Weird Dad 👨🏼‍💻",
@@ -75,12 +76,11 @@ export const Logo = ({ className }: { className?: string }) => {
       onMouseOut={onMouseOut}
     >
       <header className={`${className} select-none`}>
-        <Image
-          className="wordmark-image"
-          src="/logo-leemulvey.svg"
+        <LogoSVG
+          pathFillClass="fill-background"
+          outlineFillClass="fill-foreground-muted"
           width={228}
           height={89}
-          alt="Lee Mulvey"
         />
         <div
           className={cvu([

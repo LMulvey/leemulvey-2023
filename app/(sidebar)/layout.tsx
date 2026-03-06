@@ -1,5 +1,6 @@
 import { Lilita_One, Montserrat } from "next/font/google";
 import { PageLayout } from "@/components/PageLayout";
+import { ThemeProvider } from "@/components/ThemeProvider/ThemeProvider";
 import "../globals.scss";
 import { cvu } from "@/utilities/cvu";
 import { type Metadata } from "next";
@@ -44,10 +45,12 @@ export default function RootLayout({
   ]);
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
       <body className={bodyClasses()}>
-        <PageLayout>{children}</PageLayout>
+        <ThemeProvider>
+          <PageLayout>{children}</PageLayout>
+        </ThemeProvider>
       </body>
     </html>
   );

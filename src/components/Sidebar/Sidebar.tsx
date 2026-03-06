@@ -11,11 +11,14 @@ import {
   BookOpenCheck,
   Cloud,
   Menu,
+  Moon,
+  Sun,
   X,
 } from "lucide-react";
 import { cvu } from "@/utilities/cvu";
 import "./Sidebar.scss";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 const iconClasses = "text-highlight/80";
 
@@ -107,6 +110,7 @@ const overlayAsideClasses = cvu(
     "md:w-72",
     "shadow-lg",
     "backdrop-blur-md",
+    "relative",
   ],
   {
     variants: {
@@ -121,6 +125,8 @@ const overlayAsideClasses = cvu(
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => {
@@ -130,9 +136,55 @@ export const Sidebar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const onToggleTheme = () => {
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
+
+    if (!mounted) {
+      setTheme(nextTheme);
+      return;
+    }
+
+    const shouldReduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const documentWithTransition = document as Document & {
+      startViewTransition?: (callback: () => void) => void;
+    };
+
+    if (!shouldReduceMotion && documentWithTransition.startViewTransition) {
+      documentWithTransition.startViewTransition(() => {
+        setTheme(nextTheme);
+      });
+      return;
+    }
+
+    setTheme(nextTheme);
+  };
+
+  const isDarkMode = resolvedTheme === "dark";
+
   // Sidebar content as a function for reuse
   const sidebarContent = (
     <>
+      <button
+        type="button"
+        className={linkClasses(
+          undefined,
+          "absolute top-2 right-2 p-2 rounded-full mb-1 border border-border-muted",
+        )}
+        onClick={onToggleTheme}
+        aria-label="Toggle theme"
+      >
+        {mounted && isDarkMode ? (
+          <Sun className={iconClasses} size={16} />
+        ) : (
+          <Moon className={iconClasses} size={16} />
+        )}
+      </button>
       <Logo className="mb-3 px-2 pb-5 border-b border-border" />
       <Link
         className={`${linkClasses()} bg-gradient-to-tr from-link/40 px-4 py-2 mb-1 to-card border border-border-muted shadow-sm`}
@@ -150,6 +202,7 @@ export const Sidebar = () => {
         <NotebookPen className={iconClasses} size={24} />
         Blog
       </Link>
+
       <a
         className={linkClasses()}
         href="https://registry.jsonresume.org/lmulvey"

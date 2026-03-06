@@ -1,4 +1,5 @@
 import "../globals.scss";
+import { ThemeProvider } from "@/components/ThemeProvider/ThemeProvider";
 import { cvu } from "@/utilities/cvu";
 
 export default function RootLayout({
@@ -16,9 +17,11 @@ export default function RootLayout({
   ]);
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={bodyClasses()}>{children}</body>
+      <body className={bodyClasses()}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

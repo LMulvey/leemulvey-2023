@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const bodyClasses = cvu([
-    "text-darkGreen",
+    "text-foreground-muted",
     "font-sans",
     "max-w-7xl",
     "mx-auto",

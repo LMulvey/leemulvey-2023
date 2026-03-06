@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --body-font: "Montserrat", sans-serif;
+  --heading-font: "Lilita One", cursive;
+
+  --color-background: 18 18 18;
+  --color-background-elevated: 40 40 40;
+  --color-card: 40 40 40;
+  --color-card-elevated: 63 63 63;
+  --color-foreground: 255 255 255;
+  --color-foreground-muted: 149 174 176;
+  --color-foreground-strong: 133 161 163;
+  --color-link: 99 136 137;
+  --color-link-hover: 133 161 163;
+  --color-border: 149 174 176;
+  --color-border-muted: 63 63 63;
+  --color-accent: 149 174 176;
+  --color-accent-foreground: 40 40 40;
+  --color-highlight: 251 146 60;
+  --color-overlay: 0 0 0;
+}
+
 html,
 body {
   -webkit-font-smoothing: antialiased;
@@ -15,7 +36,10 @@ body {
 }
 
 body {
-  @apply bg-gradient-to-b from-surface2 to-surface1;
+  --body-font: var(--font-montserrat);
+  --heading-font: var(--font-lilita);
+
+  @apply bg-gradient-to-b from-background-elevated to-background text-foreground;
   margin: 0;
   font-size: 16px;
   min-height: 100vh;

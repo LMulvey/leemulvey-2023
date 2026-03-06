@@ -1,0 +1,187 @@
+{
+  "basics": {
+    "name": "Lee Mulvey",
+    "label": "Full-stack Web Developer",
+    "image": "https://www.leemulvey.com/_next/image?url=%2Flee.webp&w=256&q=75",
+    "email": "hello@leemulvey.com",
+    "url": "https://leemulvey.com",
+    "summary": "I'm Lee! I'm a full-stack engineer, weird dad, avid gamer, cyclist, pop-culture enthusiast, and music lover (and musician!) from Calgary, AB. With over 8+ years of experience in both frontend and backend development, I have the expertise you need to bring your project to life. My focus is on crafting high-quality user experiences no matter the technology. Lately, I've been using TypeScript, JavaScript, React, Next.js, Node.js, Vercel + Vercel AI, Tailwind CSS, and anything else a project calls for. I am able to learn on-the-fly and use the right tools for the job.",
+    "location": {
+      "city": "Calgary",
+      "countryCode": "CA",
+      "region": "Alberta"
+    },
+    "profiles": [
+      {
+        "network": "Bluesky",
+        "username": "leemulvey.com",
+        "url": "https://bsky.app/profile/leemulvey.com"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "leemulvey",
+        "url": "https://linkedin.com/in/leemulvey"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Ava Labs",
+      "position": "Senior Software Engineer",
+      "url": "https://avalabs.org",
+      "startDate": "2025-03-04",
+      "summary": "As a Senior Software Engineer at Ava Labs, I work on the Core Web team to build the web-based interface for the Core Wallet. The redesign in 2025 was a green-field project that allowed me to work with cutting-edge technologies and architectures to deliver a seamless experience for users to interact with the Avalanche blockchain and its ecosystem.",
+      "highlights": [
+        "Independently integrated DeFi functionality into Core Web to allow users access to lending/borrowing pools",
+        "Implementing support for Ethereum (EVM), Solana (SVM), and Bitcoin (BVM) blockchains on Core Web",
+        "Built and deployed a custom provider for Wagmi to allow Core wallet connection, and seamless event-based communication between Core Wallet and Core Web",
+        "Developed creative technical solutions in collaboration with 5+ teams, including design, product, and mobile development, to deliver user-focused products"
+      ]
+    },
+    {
+      "name": "Cashew",
+      "position": "Technology Lead",
+      "url": "https://cashewresearch.com",
+      "startDate": "2024-07-15",
+      "endDate": "2025-02-28",
+      "summary": "As Technology Lead, I work closely with the CTO to build a massive green-field application aimed at changing the way companies do market research. Using bleeding-edge AI technologies and fundamental architectures like Next.js, we're developing a next-generation tool to make market research available to all.",
+      "highlights": [
+        "Collaborated with the CTO on the architectural design and deployment of a green-field market research survey platform powered by Claude",
+        "Designed and developed a full-stack experience for both survey creators and respondents",
+        "Incorporated Next.js 15 and React 19 to deliver quick page responses and optimize server-side rendering and RSC in tandem with Next.js' App Router and API routes"
+      ]
+    },
+    {
+      "name": "Wreno",
+      "position": "Technology Lead",
+      "url": "https://wreno.io",
+      "startDate": "2024-04-15",
+      "endDate": "2024-07-12",
+      "summary": "As Technology Lead, I worked closely with a team of 4 engineers to deliver features and improvements to their flagship applications. My focus during my time there was on performance, which I was able to deliver significant improvements to.",
+      "highlights": [
+        "Led investigation into performance bottlenecks with database integration and delivered improved query performance by introducing best practices for Sequelize",
+        "Led feature development of real estate vendor management software using React, TypeScript and Next.js"
+      ]
+    },
+    {
+      "name": "Contra",
+      "position": "Senior Fullstack Engineer, Team Lead",
+      "url": "https://contra.com",
+      "startDate": "2021-04-11",
+      "endDate": "2024-04-12",
+      "summary": "As a Senior Fullstack Engineer and Team Lead, I was able to lead and make technical decisions for a variety of projects throughout my tenure there. Bringing bold, modern designs to life on the frontend and delivering performant APIs on the backend allowed me to manage implementation from front-to-back and ensure seamless experiences.",
+      "highlights": [
+        "Led feature development for Contra Portfolio, Contra Pro’s flagship paid feature, using React and TypeScript",
+        "Led feature development of the entire Contra Pro subscription flow, with both front and backend integration using Stripe to support our payments functionality",
+        "Developed close relationships with design and product to deliver a user-focused experience",
+        "Maintained active communication with the Contra community (Slack) to implement fast-feature development"
+      ]
+    },
+    {
+      "name": "Critical Mass",
+      "position": "Senior Developer -> Technology Lead",
+      "url": "https://criticalmass.com",
+      "startDate": "2018-04-10",
+      "endDate": "2021-04-05",
+      "summary": "As a Developer for Critical Mass, I get the opportunity to work on a diverse set of global clients with a large variety of technologies and frameworks.",
+      "highlights": [
+        "Led the development of a GraphQL service for Nissan USA to unify and orchestrate 150+ data sources to serve web projects and dealerships, which remains in use 5+ years later",
+        "Deployed numerous user-facing features for agency clients (i.e. large-scale corporate lodging bookings, Nissan Build & Price), working in cross-disciplinary teams using JavaScript, React, C#, and Java"
+      ]
+    },
+    {
+      "name": "Lighthouse Labs",
+      "position": "Web Mentor & Part-time Instructor",
+      "url": "https://lighthouselabs.com",
+      "startDate": "2017-01-18",
+      "endDate": "2021-04-01",
+      "summary": "As a Mentor & Instructor for Lighthouse Labs, I help students as they work through the full-time Web Development Bootcamps with in-person, hands-on mentorship. Mentorship includes being on-hand to assist students on a one-on-one basis, as well as performing ad-hoc breakouts as required.",
+      "highlights": [
+        "Leading two-hour subject lectures for students out of the in-person Calgary bootcamps",
+        "Hosting multiple in-person volunteer HTML/CSS basics bootcamps for people brand new to tech and dipping their toes in"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Lighthouse Labs",
+      "position": "Volunteer Instructor",
+      "url": "https://lighthouselabs.com/",
+      "startDate": "2017-01-01",
+      "endDate": "2021-01-01",
+      "summary": "Hosting multiple in-person volunteer HTML/CSS basics bootcamps for people brand new to tech and dipping their toes in",
+      "highlights": [
+        "Led multiple two-hour long in-person sessions to teach basic HTML/CSS and show students how to get started with web development",
+        "Session attendance was typically in the range of ~50 people"
+      ]
+    },
+    {
+      "organization": "Hacktoberfest",
+      "position": "Open-source Contributor",
+      "url": "https://hacktoberfest.com/",
+      "startDate": "2017-01-01",
+      "endDate": "2024-01-01",
+      "summary": "DigitalOcean and GitHub team up to host an annual festival of open-source where users are encouraged to contribute to projects they feel passionately about. Two projects, if-me.org and Alex, were particular highlights as they focused on mental health and encouraging inclusive language.",
+      "highlights": [
+        "Deployed multiple maintenance tasks for if-me.org, an open-source mental health platform built and maintained entirely by volunteers",
+        "Deployed multiple features and fixes for Alex, an open-source linter to catch insensitive language in codebases, which has been used by companies like Microsoft, Netflix, and Airbnb to make their codebases more inclusive"
+      ]
+    }
+  ],
+  "education": [],
+  "awards": [],
+  "certificates": [
+    {
+      "name": "JavaScript",
+      "date": "2019-01-01",
+      "issuer": "HackerRank",
+      "url": "https://www.hackerrank.com/certificates/2cc65de6c0e0"
+    }
+  ],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Frontend Engineer",
+      "level": "Master",
+      "keywords": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "React.js",
+        "Next.js",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "name": "Backend Engineer",
+      "level": "Advanced",
+      "keywords": [
+        "Node.js",
+        "TypeScript",
+        "JavaScript",
+        "PostgresQL",
+        "AWS",
+        "Docker",
+        "Vercel",
+        "Temporal"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    }
+  ],
+  "references": [
+    {
+      "name": "Gajus Kuizinas",
+      "reference": "Lee's contributions formed the technical and cultural foundation of what Contra is today. He believed in our mission, he meshed with the team, and he made things happen. Lee helped us build through the most turbulent times. Priorities would shift mid-flight, but Lee always pulled through. That can-do attitude is how we got our first major partnership with TikTok across the line in just a couple of weeks. He showed up for the team-constantly in PRs giving thoughtful feedback, helping people get work merged, and keeping things moving. Custom profiles, template work, job pricing-everything he touched had ownership behind it. Lee made the product better, the codebase cleaner, and the team stronger. I'd jump at any chance to work with Lee again."
+    }
+  ],
+  "projects": [],
+  "meta": {
+    "theme": "academic-cv-lite"
+  }
+}

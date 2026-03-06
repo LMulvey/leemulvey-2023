@@ -36,15 +36,15 @@ export default function Projects() {
             passHref
             key={project.slug}
           >
-            <div className="p-4 rounded-lg bg-gradient-to-tr from-surface2 to-surface3 flex flex-col justify-between align-middle gap-2 border border-lightGreen">
+            <div className="p-4 rounded-lg bg-gradient-to-tr from-card to-card-elevated flex flex-col justify-between align-middle gap-2 border border-border">
               <div className="flex flex-col gap-1">
                 <h3 className="text-lg font-bold flex justify-between m-0">
                   {project.meta.title}{" "}
                 </h3>
-                <span className="italic text-white text-xs">
+                <span className="italic text-foreground text-xs">
                   {project.meta.date.toLocaleString().split(",")[0]}
                 </span>
-                <p className="my-2 text-lightGreen text-sm h-auto lg:h-28">
+                <p className="my-2 text-foreground-muted text-sm h-auto lg:h-28">
                   {project.meta.description}
                 </p>
               </div>
@@ -57,7 +57,7 @@ export default function Projects() {
                     return (
                       <span
                         key={cleanTag}
-                        className="text-xs h-min font-semibold bg-lightGreen text-surface3 px-3 py-1 rounded-md shadow-sm"
+                        className="text-xs h-min font-semibold bg-accent text-accent-foreground px-3 py-1 rounded-md shadow-sm"
                       >
                         {cleanTag}
                       </span>

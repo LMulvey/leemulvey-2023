@@ -109,9 +109,9 @@ export default async function Blog(props: any) {
   );
 
   const cardContainerClasses =
-    "h-[312px] p-5 rounded-lg bg-gradient-to-tr from-surface2 to-darkGreen/50 flex flex-col justify-between align-middle gap-3 border border-lightGreen";
+    "h-[312px] p-5 rounded-lg bg-gradient-to-tr from-card to-link/50 flex flex-col justify-between align-middle gap-3 border border-border";
   const letterboxdCardContainerClasses =
-    "h-[312px] p-5 rounded-lg bg-gradient-to-tr from-surface2 to-surface3 flex flex-col justify-between align-middle gap-3 border border-orange/40";
+    "h-[312px] p-5 rounded-lg bg-gradient-to-tr from-card to-card-elevated flex flex-col justify-between align-middle gap-3 border border-highlight/40";
 
   return (
     <section className="prose prose-green lg:prose-md">
@@ -122,8 +122,8 @@ export default async function Blog(props: any) {
           href={buildBlogHref({})}
           className={`text-xs leading-4 h-min font-semibold px-2 py-0.5 rounded-md shadow-sm no-underline ${
             !selectedTag
-              ? "bg-lightGreen text-surface3"
-              : "bg-surface3 text-lightGreen border border-lightGreen/50"
+              ? "bg-accent text-accent-foreground"
+              : "bg-card-elevated text-foreground-muted border border-border/50"
           }`}
         >
           All
@@ -137,8 +137,8 @@ export default async function Blog(props: any) {
               href={buildBlogHref({ page: 1, tag })}
               className={`text-xs leading-4 h-min font-semibold px-2 py-0.5 rounded-md shadow-sm no-underline ${
                 isActive
-                  ? "bg-lightGreen text-surface3"
-                  : "bg-surface3 text-lightGreen border border-lightGreen/50"
+                  ? "bg-accent text-accent-foreground"
+                  : "bg-card-elevated text-foreground-muted border border-border/50"
               }`}
             >
               {tag}
@@ -164,18 +164,18 @@ export default async function Blog(props: any) {
                       <img
                         src={item.preview}
                         alt={`${item.title} preview`}
-                        className="w-full my-2 h-20 rounded-md object-cover object-center border border-surface3"
+                        className="w-full my-2 h-20 rounded-md object-cover object-center border border-border-muted"
                         loading="lazy"
                       />
                     ) : null}
                     <h3 className="text-lg font-bold flex justify-between m-0">
                       {item.title}
                     </h3>
-                    <span className="italic text-white text-xs">
+                    <span className="italic text-foreground text-xs">
                       {item.date.toLocaleDateString()}
                     </span>
                     <p
-                      className="my-0 text-lightGreen text-sm overflow-hidden"
+                      className="my-0 text-foreground-muted text-sm overflow-hidden"
                       style={{
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
@@ -191,7 +191,7 @@ export default async function Blog(props: any) {
                       {item.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] leading-4 h-min font-semibold bg-lightGreen text-surface3 px-2 py-0.5 rounded-md shadow-sm"
+                          className="text-[10px] leading-4 h-min font-semibold bg-accent text-accent-foreground px-2 py-0.5 rounded-md shadow-sm"
                         >
                           {tag}
                         </span>
@@ -219,7 +219,7 @@ export default async function Blog(props: any) {
                       <img
                         src={item.posterUrl}
                         alt={`${item.filmTitle} poster`}
-                        className="w-16 h-24 my-0 rounded-md object-cover border border-surface3"
+                        className="w-16 h-24 my-0 rounded-md object-cover border border-border-muted"
                         loading="lazy"
                       />
                     ) : null}
@@ -227,11 +227,11 @@ export default async function Blog(props: any) {
                       <h3 className="text-lg font-bold flex justify-between m-0">
                         {item.filmTitle} ({item.filmYear})
                       </h3>
-                      <span className="italic text-white text-xs">
+                      <span className="italic text-foreground text-xs">
                         {item.date.toLocaleDateString()}
                       </span>
                       <p
-                        className="my-2 text-lightGreen text-sm overflow-hidden"
+                        className="my-2 text-foreground-muted text-sm overflow-hidden"
                         style={{
                           display: "-webkit-box",
                           WebkitBoxOrient: "vertical",
@@ -240,14 +240,14 @@ export default async function Blog(props: any) {
                       >
                         {item.excerpt}
                       </p>
-                      <p className="text-xs mt-0 mb-2 text-lightGreen font-semibold">
+                      <p className="text-xs mt-0 mb-2 text-foreground-muted font-semibold">
                         {item.ratingLabel} · Read full review →
                       </p>
                       <div className="flex flex-row flex-wrap gap-1.5 items-start">
                         {item.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] leading-4 h-min font-semibold bg-lightGreen text-surface3 px-2 py-0.5 rounded-md shadow-sm"
+                            className="text-[10px] leading-4 h-min font-semibold bg-accent text-accent-foreground px-2 py-0.5 rounded-md shadow-sm"
                           >
                             {tag}
                           </span>
@@ -262,7 +262,7 @@ export default async function Blog(props: any) {
         })}
 
         {filteredFeedItems.length === 0 ? (
-          <p className="text-sm text-lightGreen">
+          <p className="text-sm text-foreground-muted">
             No posts found for that tag yet.
           </p>
         ) : null}
@@ -278,14 +278,14 @@ export default async function Blog(props: any) {
             aria-disabled={safePage <= 1}
             className={`text-sm font-semibold no-underline px-3 py-1 rounded-md border ${
               safePage <= 1
-                ? "pointer-events-none opacity-50 border-surface3 text-lightGreen"
-                : "border-lightGreen text-lightGreen"
+                ? "pointer-events-none opacity-50 border-border-muted text-foreground-muted"
+                : "border-border text-foreground-muted"
             }`}
           >
             ← Previous
           </Link>
 
-          <p className="text-sm text-lightGreen m-0">
+          <p className="text-sm text-foreground-muted m-0">
             Page {safePage} of {totalPages}
           </p>
 
@@ -297,8 +297,8 @@ export default async function Blog(props: any) {
             aria-disabled={safePage >= totalPages}
             className={`text-sm font-semibold no-underline px-3 py-1 rounded-md border ${
               safePage >= totalPages
-                ? "pointer-events-none opacity-50 border-surface3 text-lightGreen"
-                : "border-lightGreen text-lightGreen"
+                ? "pointer-events-none opacity-50 border-border-muted text-foreground-muted"
+                : "border-border text-foreground-muted"
             }`}
           >
             Next →

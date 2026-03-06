@@ -1,7 +1,7 @@
 .sidebar-link {
-  @apply text-lightGreen border border-transparent transition-colors;
+  @apply text-foreground-muted border border-transparent transition-colors;
 
   &:hover {
-    @apply bg-gradient-to-tr from-surface1 to-surface3 border border-surface3/40;
+    @apply bg-gradient-to-tr from-background to-card-elevated border border-border-muted/40;
   }
 }

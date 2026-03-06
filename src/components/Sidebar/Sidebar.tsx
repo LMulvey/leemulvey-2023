@@ -17,7 +17,7 @@ import { cvu } from "@/utilities/cvu";
 import "./Sidebar.scss";
 import Image from "next/image";
 
-const iconClasses = "text-orange/80";
+const iconClasses = "text-highlight/80";
 
 const linkClasses = cvu([
   "sidebar-link",
@@ -52,7 +52,11 @@ const hamburgerBarClasses = cvu(
     variants: {
       background: {
         none: [],
-        scrolled: ["bg-surface1/80", "border-b-surface3", "backdrop-blur-md"],
+        scrolled: [
+          "bg-background/80",
+          "border-b-border-muted",
+          "backdrop-blur-md",
+        ],
       },
     },
   },
@@ -63,7 +67,7 @@ const overlayMenuClasses = cvu(
     "fixed",
     "inset-0",
     "z-30",
-    "bg-black/30",
+    "bg-overlay/30",
     "transition-opacity",
     "duration-300",
     "md:hidden",
@@ -89,8 +93,8 @@ const overlayAsideClasses = cvu(
     "pt-16",
     "px-8",
     "border-x",
-    "border-x-surface3",
-    "bg-surface1/80",
+    "border-x-border-muted",
+    "bg-background/80",
     "flex",
     "flex-col",
     "gap-1",
@@ -129,9 +133,9 @@ export const Sidebar = () => {
   // Sidebar content as a function for reuse
   const sidebarContent = (
     <>
-      <Logo className="mb-3 px-2 pb-5 border-b border-lightGreen" />
+      <Logo className="mb-3 px-2 pb-5 border-b border-border" />
       <Link
-        className={`${linkClasses()} bg-gradient-to-tr from-darkGreen/40 px-4 py-2 mb-1 to-surface2 border border-surface3 shadow-sm`}
+        className={`${linkClasses()} bg-gradient-to-tr from-link/40 px-4 py-2 mb-1 to-card border border-border-muted shadow-sm`}
         href="/projects"
         onClick={() => setOpen(false)}
       >
@@ -139,7 +143,7 @@ export const Sidebar = () => {
         Projects
       </Link>
       <Link
-        className={`${linkClasses()} bg-gradient-to-tr from-darkGreen/40 px-4 py-2 mb-4 to-surface2 border border-surface3 shadow-sm`}
+        className={`${linkClasses()} bg-gradient-to-tr from-link/40 px-4 py-2 mb-4 to-card border border-border-muted shadow-sm`}
         href="/blog"
         onClick={() => setOpen(false)}
       >
@@ -225,7 +229,7 @@ export const Sidebar = () => {
           alt="Lee Mulvey"
         />
         <button
-          className="flex items-center justify-center bg-surface2 border border-surface3 rounded-md p-2 shadow-lg"
+          className="flex items-center justify-center bg-card border border-border-muted rounded-md p-2 shadow-lg"
           aria-label={open ? "Close sidebar" : "Open sidebar"}
           onClick={() => setOpen((v) => !v)}
         >

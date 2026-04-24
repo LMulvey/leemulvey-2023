@@ -124,11 +124,13 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: any) {
+  const siteUrl = "https://leemulvey.com";
   const params = await props.params;
   const blog = getPost(params);
   const title = (blog.frontMatter.title as string) ?? "Blog Post";
   const description = (blog.frontMatter.description as string) ?? "";
-  const preview = (blog.frontMatter.preview as string | undefined) ?? "/og";
+  const preview =
+    (blog.frontMatter.preview as string | undefined) ?? "/opengraph-image";
   const tags = ((blog.frontMatter.tags as string | undefined) ?? "")
     .split(",")
     .map((tag) => tag.trim())
@@ -136,10 +138,8 @@ export async function generateMetadata(props: any) {
   const publishedDate = blog.frontMatter.date
     ? new Date(blog.frontMatter.date as string).toISOString()
     : undefined;
-  const ogImage = preview.startsWith("http")
-    ? preview
-    : `https://leemulvey.com${preview}`;
-  const canonicalUrl = `https://leemulvey.com/blog/${blog.slug}`;
+  const ogImage = preview.startsWith("http") ? preview : `${siteUrl}${preview}`;
+  const canonicalUrl = `${siteUrl}/blog/${blog.slug}`;
 
   return {
     alternates: {

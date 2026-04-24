@@ -124,11 +124,48 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: any) {
+  const siteUrl = "https://leemulvey.com";
   const params = await props.params;
   const project = getPost(params);
+  const title = (project.frontMatter.title as string) ?? "Project";
+  const description = (project.frontMatter.description as string) ?? "";
+  const preview =
+    (project.frontMatter.preview as string | undefined) ?? "/opengraph-image";
+  const tags = ((project.frontMatter.tags as string | undefined) ?? "")
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+  const publishedDate = project.frontMatter.date
+    ? new Date(project.frontMatter.date as string).toISOString()
+    : undefined;
+  const ogImage = preview.startsWith("http") ? preview : `${siteUrl}${preview}`;
+  const canonicalUrl = `${siteUrl}/projects/${project.slug}`;
 
   return {
-    description: project.frontMatter.description,
-    title: project.frontMatter.title,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    description,
+    openGraph: {
+      description,
+      images: [
+        {
+          alt: title,
+          url: ogImage,
+        },
+      ],
+      publishedTime: publishedDate,
+      tags,
+      title,
+      type: "article",
+      url: canonicalUrl,
+    },
+    title,
+    twitter: {
+      card: "summary_large_image",
+      description,
+      images: [ogImage],
+      title,
+    },
   };
 }

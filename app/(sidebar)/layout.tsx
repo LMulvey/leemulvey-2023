@@ -34,14 +34,6 @@ export const metadata: Metadata = {
   openGraph: {
     description:
       "Get to know Lee Mulvey, a talented Full-stack Engineer from Calgary, Canada. With expertise in JavaScript, TypeScript, React, Node.js, and GraphQL.",
-    images: [
-      {
-        alt: "Lee Mulvey - Full-stack Engineer",
-        height: 630,
-        url: "/opengraph-image",
-        width: 1200,
-      },
-    ],
     locale: "en_CA",
     siteName: "leemulvey.com",
     title: "Lee Mulvey - Full-stack Engineer based in Calgary, Alberta",
@@ -61,7 +53,6 @@ export const metadata: Metadata = {
     creator: "@lmulvey",
     description:
       "Get to know Lee Mulvey, a talented Full-stack Engineer from Calgary, Canada. With expertise in JavaScript, TypeScript, React, Node.js, and GraphQL.",
-    images: ["/twitter-image"],
     title: "Lee Mulvey - Full-stack Engineer based in Calgary, Alberta",
   },
 };

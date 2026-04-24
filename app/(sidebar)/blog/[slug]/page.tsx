@@ -130,7 +130,7 @@ export async function generateMetadata(props: any) {
   const title = (blog.frontMatter.title as string) ?? "Blog Post";
   const description = (blog.frontMatter.description as string) ?? "";
   const preview =
-    (blog.frontMatter.preview as string | undefined) ?? "/opengraph-image";
+    (blog.frontMatter.preview as string | undefined) ?? "/opengraph-image.png";
   const tags = ((blog.frontMatter.tags as string | undefined) ?? "")
     .split(",")
     .map((tag) => tag.trim())

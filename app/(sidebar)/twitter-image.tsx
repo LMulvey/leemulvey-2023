@@ -1,6 +1,5 @@
 import OpengraphImage from "./opengraph-image";
 
-export const runtime = "edge";
 export const alt = "Lee Mulvey - Full-stack Engineer";
 export const size = {
   height: 630,

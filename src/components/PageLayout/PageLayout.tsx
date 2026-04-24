@@ -2,22 +2,16 @@
 
 import { ReactNode } from "react";
 import { Sidebar } from "../Sidebar";
-import { cvu } from "@/utilities/cvu";
 import { Footer } from "../Footer";
 
 export const PageLayout = ({ children }: { children: ReactNode }) => {
-  const mainClasses = cvu([
-    "grid",
-    "grid-cols-1",
-    "md:grid-cols-[324px_auto]",
-    "min-h-screen",
-  ]);
-
   return (
-    <main className={mainClasses()}>
+    <main className="min-h-screen flex flex-col">
       <Sidebar />
-      <div className="overflow-y-scroll mt-24 md:mt-16 md:pr-16 relative pb-[136px]">
-        <div className="px-8 pb-24">{children}</div>
+      <div className="relative flex-1 pb-[136px] pt-20 md:pt-6">
+        <div className="w-full max-w-[1520px] mx-auto px-4 md:px-8 lg:px-10 xl:px-12 pb-24">
+          {children}
+        </div>
         <Footer />
       </div>
     </main>

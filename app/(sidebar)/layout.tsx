@@ -38,9 +38,7 @@ export default function RootLayout({
     montserrat.variable,
     lilita.variable,
     "font-sans",
-    "max-w-7xl",
-    "mx-auto",
-    "my-32",
+    "w-full",
     "layout--container",
   ]);
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Logo } from "../Logo";
+import { usePathname } from "next/navigation";
 import {
   FolderKey,
   NotebookPen,
@@ -17,24 +17,33 @@ import {
 } from "lucide-react";
 import { cvu } from "@/utilities/cvu";
 import "./Sidebar.scss";
-import Image from "next/image";
 import { useTheme } from "next-themes";
 import { LogoSVG } from "../Logo/LogoSVG";
 
 const iconClasses = "text-highlight/80";
 
-const linkClasses = cvu([
-  "sidebar-link",
-  "p-2",
-  "rounded-md",
-  "transition-colors",
-  "text-lg",
-  "font-semibold",
-  "flex",
-  "flex-row",
-  "gap-4",
-  "items-center",
-]);
+const linkClasses = cvu(
+  [
+    "sidebar-link",
+    "p-2",
+    "rounded-md",
+    "transition-colors",
+    "text-lg",
+    "font-semibold",
+    "flex",
+    "flex-row",
+    "gap-4",
+    "items-center",
+  ],
+  {
+    variants: {
+      active: {
+        false: "",
+        true: "bg-gradient-to-tr",
+      },
+    },
+  },
+);
 
 const hamburgerBarClasses = cvu(
   [
@@ -105,13 +114,8 @@ const overlayAsideClasses = cvu(
     "z-40",
     "transition-transform",
     "duration-300",
-    "md:static",
-    "md:translate-x-0",
-    "md:flex",
-    "md:w-72",
     "shadow-lg",
     "backdrop-blur-md",
-    "md:relative",
   ],
   {
     variants: {
@@ -123,11 +127,58 @@ const overlayAsideClasses = cvu(
   },
 );
 
+const desktopHeaderClasses = cvu(
+  ["hidden", "md:block", "sticky", "top-0", "z-30", "w-full", "transition-all"],
+  {
+    variants: {
+      background: {
+        none: ["bg-background/90"],
+        scrolled: ["bg-background/85", "shadow-sm", "backdrop-blur-md"],
+      },
+    },
+  },
+);
+
+const desktopNavLinkClasses = cvu(
+  [
+    "text-sm",
+    "uppercase",
+    "tracking-[0.08em]",
+    "font-medium",
+    "px-1",
+    "py-1",
+    "border-b",
+    "transition-colors",
+    "no-underline",
+  ],
+  {
+    variants: {
+      active: {
+        false: [
+          "border-transparent",
+          "text-foreground-muted",
+          "hover:text-foreground",
+          "hover:border-border/70",
+        ],
+        true: ["border-link/80", "text-foreground"],
+      },
+    },
+  },
+);
+
 export const Sidebar = () => {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+
+  const isRouteActive = (route: string) =>
+    pathname === route || pathname.startsWith(`${route}/`);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -168,27 +219,69 @@ export const Sidebar = () => {
 
   const isDarkMode = resolvedTheme === "dark";
 
-  // Sidebar content as a function for reuse
-  const sidebarContent = (
+  const externalLinks = [
+    {
+      href: "https://registry.jsonresume.org/lmulvey",
+      icon: BookOpenCheck,
+      label: "Resume",
+    },
+    {
+      href: "https://github.com/lmulvey",
+      icon: Github,
+      label: "GitHub",
+    },
+    {
+      href: "mailto:hello@leemulvey.com?subject=Hey, Lee, I promise I am not sending you spam",
+      icon: MailCheck,
+      label: "Email",
+    },
+    {
+      href: "https://www.linkedin.com/in/leemulvey/",
+      icon: Linkedin,
+      label: "LinkedIn",
+    },
+    {
+      href: "https://stackoverflow.com/users/8246359/lmulvey",
+      icon: Layers,
+      label: "StackOverflow",
+    },
+    {
+      href: "https://bsky.app/profile/leemulvey.com",
+      icon: Cloud,
+      label: "Bluesky",
+    },
+  ];
+
+  const mobileDrawerContent = (
     <>
-      <button
-        type="button"
-        className={linkClasses(
-          undefined,
-          "absolute top-2 right-2 p-2 rounded-full mb-1 border border-border-muted",
-        )}
-        onClick={onToggleTheme}
-        aria-label="Toggle theme"
-      >
-        {mounted && isDarkMode ? (
-          <Sun className={iconClasses} size={16} />
-        ) : (
-          <Moon className={iconClasses} size={16} />
-        )}
-      </button>
-      <Logo className="mb-3 px-2 pb-5 border-b border-border" />
+      <div className="flex items-center justify-between mb-3 px-1 pb-3 border-b border-border">
+        <Link href="/" className="no-underline" onClick={() => setOpen(false)}>
+          <LogoSVG
+            pathFillClass="fill-background"
+            outlineFillClass="fill-foreground-muted"
+            width={144}
+            height={56}
+          />
+        </Link>
+
+        <button
+          type="button"
+          className="p-2 rounded-full border border-border-muted bg-card"
+          onClick={onToggleTheme}
+          aria-label="Toggle theme"
+        >
+          {mounted && isDarkMode ? (
+            <Sun className={iconClasses} size={16} />
+          ) : (
+            <Moon className={iconClasses} size={16} />
+          )}
+        </button>
+      </div>
+
       <Link
-        className={`${linkClasses()} bg-gradient-to-tr from-link/40 px-4 py-2 mb-1 to-card border border-border-muted shadow-sm`}
+        className={`${linkClasses({
+          active: isRouteActive("/projects"),
+        })}  from-link/40 px-4 py-2 mb-1 to-card border border-border-muted shadow-sm`}
         href="/projects"
         onClick={() => setOpen(false)}
       >
@@ -196,7 +289,9 @@ export const Sidebar = () => {
         Projects
       </Link>
       <Link
-        className={`${linkClasses()} bg-gradient-to-tr from-link/40 px-4 py-2 mb-4 to-card border border-border-muted shadow-sm`}
+        className={`${linkClasses({
+          active: isRouteActive("/blog"),
+        })} from-link/40 px-4 py-2 mb-4 to-card border border-border-muted shadow-sm`}
         href="/blog"
         onClick={() => setOpen(false)}
       >
@@ -204,71 +299,94 @@ export const Sidebar = () => {
         Blog
       </Link>
 
-      <a
-        className={linkClasses()}
-        href="https://registry.jsonresume.org/lmulvey"
-        rel="noopener noreferrer"
-        target="_blank"
-        onClick={() => setOpen(false)}
-      >
-        <BookOpenCheck className={iconClasses} size={24} />
-        Resume
-      </a>
-      <a
-        className={linkClasses()}
-        href="https://github.com/lmulvey"
-        rel="noopener noreferrer"
-        target="_blank"
-        onClick={() => setOpen(false)}
-      >
-        <Github className={iconClasses} size={24} />
-        GitHub
-      </a>
-      <a
-        className={linkClasses()}
-        href="mailto:hello@leemulvey.com?subject=Hey, Lee, I promise I am not sending you spam"
-        rel="noopener noreferrer"
-        target="_blank"
-        onClick={() => setOpen(false)}
-      >
-        <MailCheck className={iconClasses} size={24} />
-        Email
-      </a>
-      <a
-        className={linkClasses()}
-        href="https://www.linkedin.com/in/leemulvey/"
-        rel="noopener noreferrer"
-        target="_blank"
-        onClick={() => setOpen(false)}
-      >
-        <Linkedin className={iconClasses} size={24} />
-        LinkedIn
-      </a>
-      <a
-        className={linkClasses()}
-        href="https://stackoverflow.com/users/8246359/lmulvey"
-        rel="noopener noreferrer"
-        target="_blank"
-        onClick={() => setOpen(false)}
-      >
-        <Layers className={iconClasses} size={24} />
-        StackOverflow
-      </a>
-      <a
-        className={linkClasses()}
-        href="https://bsky.app/profile/leemulvey.com"
-        rel="noopener noreferrer"
-        target="_blank"
-        onClick={() => setOpen(false)}
-      >
-        <Cloud className={iconClasses} size={24} />
-        Bluesky
-      </a>
+      {externalLinks.map((item) => (
+        <a
+          key={item.label}
+          className={linkClasses()}
+          href={item.href}
+          rel="noopener noreferrer"
+          target="_blank"
+          onClick={() => setOpen(false)}
+        >
+          <item.icon className={iconClasses} size={24} />
+          {item.label}
+        </a>
+      ))}
     </>
   );
 
   return (
     <>
+      <header
+        className={desktopHeaderClasses({
+          background: scrolled ? "scrolled" : "none",
+        })}
+      >
+        <div className="w-full px-6 lg:px-10 xl:px-12 py-3 flex items-center justify-between gap-4">
+          <Link href="/" className="no-underline shrink-0">
+            <LogoSVG
+              pathFillClass="fill-background"
+              outlineFillClass="fill-foreground-muted"
+              width={156}
+              height={60}
+            />
+          </Link>
+
+          <nav className="flex items-center gap-6">
+            <Link
+              href="/projects"
+              className={desktopNavLinkClasses({
+                active: isRouteActive("/projects"),
+              })}
+            >
+              Projects
+            </Link>
+            <Link
+              href="/blog"
+              className={desktopNavLinkClasses({
+                active: isRouteActive("/blog"),
+              })}
+            >
+              Blog
+            </Link>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              {externalLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  aria-label={item.label}
+                  title={item.label}
+                  className="p-1.5 rounded-md text-foreground-muted hover:text-foreground transition-colors"
+                >
+                  <item.icon className={iconClasses} size={16} />
+                </a>
+              ))}
+            </div>
+
+            <div className="pl-3 border-l border-border-muted/60">
+              <button
+                type="button"
+                className="p-2 rounded-md border border-border-muted/70 bg-card-elevated/60 text-foreground-muted hover:text-foreground hover:bg-card transition-colors shadow-sm"
+                onClick={onToggleTheme}
+                aria-label="Toggle theme"
+                title="Toggle theme"
+              >
+                {mounted && isDarkMode ? (
+                  <Sun className={iconClasses} size={16} />
+                ) : (
+                  <Moon className={iconClasses} size={16} />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
       {/* Hamburger button - visible below md */}
       <div
         className={hamburgerBarClasses({
@@ -300,9 +418,9 @@ export const Sidebar = () => {
       {/* Sidebar - mobile (slide in) and desktop (static) */}
       <aside
         className={overlayAsideClasses({ state: open ? "open" : "closed" })}
-        aria-label="Sidebar"
+        aria-label="Mobile navigation drawer"
       >
-        {sidebarContent}
+        {mobileDrawerContent}
       </aside>
     </>
   );

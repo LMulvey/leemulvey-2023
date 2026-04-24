@@ -1,0 +1,66 @@
+---
+title: Core DeFi Integrations (Deposit + Borrow)
+date: 2026-04-23
+description: Led the integration of Aave and Benqi lending/borrowing flows into Core Web, powering core.app/deposit and core.app/borrow with direct contract interactions.
+preview: /projects/defi.webp
+tags: wagmi, react, typescript, defi, aave, benqi, evm, avalanche
+---
+
+<a aria-label="Core Deposit" href="https://core.app/deposit" target="_blank">
+  <Hero
+    src="/projects/defi.webp"
+    alt="Core DeFi integrations for deposit and borrow"
+  />
+</a>
+
+# Overview
+
+I led development of Core's DeFi integrations for [core.app/deposit](https://core.app/deposit) and [core.app/borrow](https://core.app/borrow), bringing Aave and Benqi market interactions directly into the Core dApp experience.
+
+The goal was to let users supply and borrow without having to leave Core, while preserving the same trust model users expect from onchain finance: direct wallet signatures, transparent contract calls, and predictable transaction outcomes.
+
+# What We Built
+
+We shipped two production user flows:
+
+- Deposit: supply supported assets into protocol markets and track updated positions.
+- Borrow: open and manage borrow positions with real-time collateral and utilization context.
+
+Both flows were designed to feel native to the Core product while still exposing protocol-level information users need to make safe decisions.
+
+# Technical Approach
+
+The integration stack centered around React, Typescript, and Wagmi for wallet + chain orchestration.
+
+Under the hood, we integrated directly with Aave and Benqi contracts rather than proxying protocol actions through an offchain layer. This gave us tighter control over call construction, clearer error surfaces, and stronger alignment with protocol behavior.
+
+Key implementation areas included:
+
+- Contract write/read hooks for supply, withdraw, borrow, and repay lifecycle actions.
+- Market and account state normalization across protocol-specific response shapes.
+- Unit/decimal conversion utilities to avoid precision and display drift.
+- Gas-aware UX states and transaction feedback for multi-step actions.
+- Defensive handling around approvals, allowance edge cases, and chain-specific failures.
+
+# UX and Product Considerations
+
+DeFi interactions can fail for many reasons, so we treated status and clarity as first-class features:
+
+- Preflight checks before submission to reduce avoidable failures.
+- Explicit loading/success/error transaction stages.
+- Contextual copy around collateral health and borrowing implications.
+- Predictable refresh behavior after confirmations so balances and positions settle cleanly.
+
+# Impact
+
+This work enabled Core users to access lending and borrowing opportunities from a single interface, reducing friction between discovery and execution.
+
+From an engineering perspective, the project established reusable DeFi integration patterns in Core Web that can be applied to future protocol integrations with less implementation overhead.
+
+# Stack
+
+- React
+- Typescript
+- Wagmi
+- EVM smart contract integrations
+- Aave + Benqi protocols

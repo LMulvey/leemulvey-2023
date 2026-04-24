@@ -1,11 +1,26 @@
 .hero-image {
   position: relative;
   width: 100%;
-  height: 600px;
 
   img {
-    border-radius: 8px;
     object-fit: cover;
     object-position: center;
+    transition: transform 260ms ease;
+  }
+
+  &:hover img {
+    transform: scale(1.01);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image {
+    img {
+      transition: none;
+    }
+
+    &:hover img {
+      transform: none;
+    }
   }
 }

@@ -16,7 +16,7 @@ function decodeEntities(value: string) {
   return value
     .replaceAll("&amp;", "&")
     .replaceAll("&quot;", '"')
-    .replaceAll("&#39;", "'")
+    .replaceAll("&#039;", "'")
     .replaceAll("&lt;", "<")
     .replaceAll("&gt;", ">");
 }

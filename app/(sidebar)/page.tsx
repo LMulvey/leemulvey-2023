@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <article className="w-full max-w-5xl mx-auto pb-8">
-      <section className="rounded-2xl border border-border-muted/70 bg-card/60 px-5 py-6 md:px-8 md:py-8">
+      <section className="bg-card/60 px-5 py-6 md:px-8 md:py-8">
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
           <Image
             className="rounded-xl border border-border-muted/60"
@@ -67,7 +67,7 @@ export default function Home() {
 
           <div className="min-w-0">
             <h1 className="m-0 text-3xl md:text-5xl font-semibold tracking-[-0.02em] leading-tight text-foreground">
-              Hey, I am Lee{" "}
+              Hey, I&apos;m Lee{" "}
               <span role="img" aria-label="waving emoji">
                 👋🏼
               </span>
@@ -126,7 +126,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-8 rounded-2xl border border-border-muted/70 bg-card-elevated/40 px-5 py-5 md:px-7 md:py-6">
+      <section className="mt-8 bg-card-elevated/40 px-5 py-5 md:px-7 md:py-6">
         <p className="m-0 text-[15px] leading-7 text-foreground-muted">
           Check out my <Link href="/projects">projects</Link>, read the
           occasional <Link href="/blog">blog post</Link>, or dig into the code

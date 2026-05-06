@@ -106,7 +106,7 @@ export default async function Projects(props: any) {
   );
 
   const cardContainerClasses =
-    "group w-full p-5 md:p-6 rounded-xl bg-gradient-to-br from-card via-card to-link/20 flex flex-col gap-4 border border-border border-t-2 border-t-link/70 shadow-sm transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-md hover:border-border-muted";
+    "group w-full p-5 md:p-6 rounded-xl bg-gradient-to-br from-card via-card to-link/20 flex flex-col gap-4 shadow-sm transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-md hover:border-border-muted";
   const cardLinkClasses =
     "no-underline block w-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
   const chipClasses =
@@ -125,7 +125,7 @@ export default async function Projects(props: any) {
 
       <div className="not-prose mt-4 mb-8">
         <details
-          className="group md:hidden rounded-xl border border-border-muted/70 bg-card-elevated/40 px-4 py-3"
+          className="group md:hidden bg-card-elevated/40 px-4 py-3"
           open={!!selectedTag}
         >
           <summary className="list-none cursor-pointer select-none flex items-center justify-between">
@@ -173,10 +173,7 @@ export default async function Projects(props: any) {
           </div>
         </details>
 
-        <div className="hidden md:block rounded-xl border border-border-muted/70 bg-card-elevated/40 px-4 py-3">
-          <p className="m-0 text-[11px] uppercase tracking-[0.08em] text-foreground-muted">
-            Tags
-          </p>
+        <div className="hidden md:block">
           <div className="mt-2 flex flex-row flex-wrap gap-2 items-center">
             <Link
               href={buildProjectsHref({})}

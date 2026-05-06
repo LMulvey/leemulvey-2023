@@ -158,9 +158,9 @@ export default async function Blog(props: any) {
   );
 
   const cardContainerClasses =
-    "group w-full p-5 md:p-6 rounded-xl bg-gradient-to-br from-card via-card to-link/20 flex flex-col gap-4 border border-border border-t-2 border-t-link/70 shadow-sm transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-md hover:border-border-muted";
+    "group w-full p-5 md:p-6 rounded-xl bg-gradient-to-br from-card via-card to-link/20 flex flex-col gap-4 shadow-sm transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-md hover:border-border-muted";
   const letterboxdCardContainerClasses =
-    "group w-full p-5 md:p-6 rounded-xl bg-gradient-to-br from-card to-card-elevated flex flex-col gap-4 border border-highlight/40 border-t-2 border-t-highlight/70 shadow-sm transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-md";
+    "group w-full p-5 md:p-6 rounded-xl bg-gradient-to-br from-card to-card-elevated flex flex-col gap-4 shadow-sm transition-all duration-200 motion-safe:hover:-translate-y-0.5 hover:shadow-md";
   const cardLinkClasses =
     "no-underline block w-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
   const chipClasses =
@@ -174,12 +174,11 @@ export default async function Blog(props: any) {
         Latest Thoughts
       </h2>
       <p className="mt-3 mb-7 text-[15px] leading-7 text-foreground-muted max-w-2xl">
-        A running stream of writing and Letterboxd notes, ordered by most
-        recent.
+        A running stream of writing and Letterboxd notes, ordered by most recent
       </p>
 
       <div className="not-prose mt-4 mb-8 space-y-4">
-        <div className="flex w-full md:w-auto md:inline-flex items-center rounded-full border border-border-muted/70 bg-card-elevated/70 p-1 shadow-sm">
+        <div className="flex w-full md:w-auto md:inline-flex items-center rounded-full bg-card-elevated/70 p-2 shadow-sm">
           {(
             [
               { label: "All", value: "all" },
@@ -199,7 +198,7 @@ export default async function Blog(props: any) {
                   page: 1,
                   tag: shouldKeepTag ? selectedTag : undefined,
                 })}
-                className={`no-underline flex-1 text-center md:flex-none px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.07em] font-medium transition-colors ${
+                className={`no-underline flex-1 text-center md:flex-none px-3 py-1 rounded-full text-[14px] uppercase tracking-[0.07em] font-medium transition-colors ${
                   isActive
                     ? "bg-accent text-accent-foreground"
                     : "text-foreground-muted hover:text-foreground"
@@ -212,7 +211,7 @@ export default async function Blog(props: any) {
         </div>
 
         <details
-          className="group md:hidden rounded-xl border border-border-muted/70 bg-card-elevated/40 px-4 py-3"
+          className="group md:hidden bg-card-elevated/40 px-4 py-3"
           open={!!selectedTag}
         >
           <summary className="list-none cursor-pointer select-none flex items-center justify-between">
@@ -260,10 +259,7 @@ export default async function Blog(props: any) {
           </div>
         </details>
 
-        <div className="hidden md:block rounded-xl border border-border-muted/70 bg-card-elevated/40 px-4 py-3">
-          <p className="m-0 text-[11px] uppercase tracking-[0.08em] text-foreground-muted">
-            Tags
-          </p>
+        <div className="hidden md:block">
           <div className="mt-2 flex flex-row flex-wrap gap-2 items-center">
             <Link
               href={buildBlogHref({ filter: selectedFilter })}

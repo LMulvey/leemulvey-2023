@@ -64,7 +64,7 @@ export default async function ProjectPage(props: any) {
         ← Back to projects
       </Link>
 
-      <header className="not-prose mt-6 rounded-xl border border-border-muted/70 bg-card/60 px-5 py-6 md:px-7 md:py-7">
+      <header className="not-prose mt-6 bg-card/60 px-5 py-6 md:px-7 md:py-7">
         <h1 className="m-0 text-3xl md:text-5xl font-semibold tracking-[-0.02em] text-foreground leading-tight">
           {title}
         </h1>

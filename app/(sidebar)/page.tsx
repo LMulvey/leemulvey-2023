@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <article className="w-full max-w-5xl mx-auto pb-8">
-      <section className="bg-card/60 px-5 py-6 md:px-8 md:py-8">
+      <section className="px-5 py-6 md:px-8 md:py-8">
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
           <Image
             className="rounded-xl border border-border-muted/60"

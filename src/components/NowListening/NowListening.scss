@@ -1,0 +1,88 @@
+.now-listening-marquee {
+  position: relative;
+  overflow: hidden;
+}
+
+.now-listening-marquee-measure {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.now-listening-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: now-listening-marquee-scroll 12s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.now-listening-marquee-text {
+  white-space: nowrap;
+  padding-right: 2rem;
+}
+
+@keyframes now-listening-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.now-listening-eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.now-listening-eq-bar {
+  width: 2px;
+  height: 35%;
+  border-radius: 1px;
+  background-color: currentColor;
+}
+
+.now-listening-eq--playing .now-listening-eq-bar {
+  animation: now-listening-eq-bounce 1s ease-in-out infinite;
+
+  &:nth-child(1) {
+    animation-delay: -0.9s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: -0.6s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: -0.3s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 0s;
+  }
+}
+
+@keyframes now-listening-eq-bounce {
+  0%,
+  100% {
+    height: 30%;
+  }
+
+  50% {
+    height: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .now-listening-marquee-track,
+  .now-listening-eq--playing .now-listening-eq-bar {
+    animation: none !important;
+  }
+}

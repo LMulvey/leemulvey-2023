@@ -73,7 +73,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="mt-3 mb-0 text-[15px] md:text-base leading-7 text-foreground-muted max-w-3xl">
-              Full-stack engineer based in Calgary, AB focused on building
+              Full-stack engineer based in Edmonton, AB focused on building
               thoughtful products and interfaces that feel fast, clear, and
               dependable.
             </p>

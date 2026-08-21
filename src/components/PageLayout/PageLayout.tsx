@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 import { Sidebar } from "../Sidebar";
 import { Footer } from "../Footer";
+import { NowListening } from "../NowListening";
 
 export const PageLayout = ({ children }: { children: ReactNode }) => {
   return (
@@ -14,6 +15,7 @@ export const PageLayout = ({ children }: { children: ReactNode }) => {
         </div>
         <Footer />
       </div>
+      <NowListening />
     </main>
   );
 };

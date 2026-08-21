@@ -119,7 +119,7 @@ export default async function OpengraphImage() {
                   width: 9,
                 }}
               />
-              Calgary, Alberta
+              Edmonton, Alberta
             </div>
 
             <div

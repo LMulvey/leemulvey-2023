@@ -1,24 +1,12 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import {
-  FolderKey,
-  NotebookPen,
-  Github,
-  MailCheck,
-  Layers,
-  Linkedin,
-  BookOpenCheck,
-  Cloud,
-  Menu,
-  Moon,
-  Sun,
-  X,
-} from "lucide-react";
+import { FolderKey, NotebookPen, MailCheck, Menu, Moon, Sun, X } from "lucide-react";
 import { cvu } from "@/utilities/cvu";
 import "./Sidebar.scss";
 import { useTheme } from "next-themes";
 import { LogoSVG } from "../Logo/LogoSVG";
+import { CONTACT_LINKS } from "@/constants/contactLinks";
 
 const iconClasses = "text-highlight/80";
 
@@ -204,13 +192,15 @@ export const Sidebar = () => {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     const documentWithTransition = document as Document & {
-      startViewTransition?: (callback: () => void) => void;
+      startViewTransition?: (callback: () => void) => { ready: Promise<void> };
     };
 
     if (!shouldReduceMotion && documentWithTransition.startViewTransition) {
-      documentWithTransition.startViewTransition(() => {
+      const transition = documentWithTransition.startViewTransition(() => {
         setTheme(nextTheme);
       });
+
+      transition.ready.catch(() => {});
       return;
     }
 
@@ -218,39 +208,6 @@ export const Sidebar = () => {
   };
 
   const isDarkMode = resolvedTheme === "dark";
-
-  const externalLinks = [
-    {
-      href: "https://registry.jsonresume.org/lmulvey",
-      icon: BookOpenCheck,
-      label: "Resume",
-    },
-    {
-      href: "https://github.com/lmulvey",
-      icon: Github,
-      label: "GitHub",
-    },
-    {
-      href: "mailto:hello@leemulvey.com?subject=Hey, Lee, I promise I am not sending you spam",
-      icon: MailCheck,
-      label: "Email",
-    },
-    {
-      href: "https://www.linkedin.com/in/leemulvey/",
-      icon: Linkedin,
-      label: "LinkedIn",
-    },
-    {
-      href: "https://stackoverflow.com/users/8246359/lmulvey",
-      icon: Layers,
-      label: "StackOverflow",
-    },
-    {
-      href: "https://bsky.app/profile/leemulvey.com",
-      icon: Cloud,
-      label: "Bluesky",
-    },
-  ];
 
   const mobileDrawerContent = (
     <>
@@ -298,8 +255,18 @@ export const Sidebar = () => {
         <NotebookPen className={iconClasses} size={24} />
         Blog
       </Link>
+      <Link
+        className={`${linkClasses({
+          active: isRouteActive("/contact"),
+        })} from-link/40 px-4 py-2 mb-4 to-card border border-border-muted shadow-sm`}
+        href="/contact"
+        onClick={() => setOpen(false)}
+      >
+        <MailCheck className={iconClasses} size={24} />
+        Contact
+      </Link>
 
-      {externalLinks.map((item) => (
+      {CONTACT_LINKS.map((item) => (
         <a
           key={item.label}
           className={linkClasses()}
@@ -349,11 +316,19 @@ export const Sidebar = () => {
             >
               Blog
             </Link>
+            <Link
+              href="/contact"
+              className={desktopNavLinkClasses({
+                active: isRouteActive("/contact"),
+              })}
+            >
+              Contact
+            </Link>
           </nav>
 
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              {externalLinks.map((item) => (
+              {CONTACT_LINKS.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}

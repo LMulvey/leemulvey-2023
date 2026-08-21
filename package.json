@@ -11,10 +11,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@types/node": "18.11.18",
-    "@types/react": "19.0.3",
-    "@types/react-dom": "19.0.2",
-    "@typescript-eslint/parser": "^8.0.0",
+    "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "cvu": "^1.0.0",
     "eslint": "8.57.0",
@@ -37,6 +34,10 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
+    "@types/node": "18.11.18",
+    "@types/react": "19.0.3",
+    "@types/react-dom": "19.0.2",
+    "@typescript-eslint/parser": "^8.0.0",
     "autoprefixer": "^10.4.14",
     "cspell": "^6.31.1",
     "eslint-config-prettier": "^9.0.0",
@@ -48,12 +49,6 @@
     "tailwindcss": "^3.3.1"
   },
   "engines": {
-    "node": "20"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.0.3",
-      "@types/react-dom": "19.0.2"
-    }
+    "node": "24"
   }
 }

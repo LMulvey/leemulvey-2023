@@ -5,9 +5,9 @@
     "image": "https://www.leemulvey.com/_next/image?url=%2Flee.webp&w=256&q=75",
     "email": "hello@leemulvey.com",
     "url": "https://leemulvey.com",
-    "summary": "I'm Lee! I'm a full-stack engineer, weird dad, avid gamer, cyclist, pop-culture enthusiast, and music lover (and musician!) from Calgary, AB. With over 8+ years of experience in both frontend and backend development, I have the expertise you need to bring your project to life. My focus is on crafting high-quality user experiences no matter the technology. Lately, I've been using TypeScript, JavaScript, React, Next.js, Node.js, Vercel + Vercel AI, Tailwind CSS, and anything else a project calls for. I am able to learn on-the-fly and use the right tools for the job.",
+    "summary": "I'm Lee! I'm a full-stack engineer, weird dad, avid gamer, cyclist, pop-culture enthusiast, and music lover (and musician!) from Edmonton, AB. With over 8+ years of experience in both frontend and backend development, I have the expertise you need to bring your project to life. My focus is on crafting high-quality user experiences no matter the technology. Lately, I've been using TypeScript, JavaScript, React, Next.js, Node.js, Vercel + Vercel AI, Tailwind CSS, and anything else a project calls for. I am able to learn on-the-fly and use the right tools for the job.",
     "location": {
-      "city": "Calgary",
+      "city": "Edmonton",
       "countryCode": "CA",
       "region": "Alberta"
     },
@@ -97,7 +97,7 @@
       "endDate": "2021-04-01",
       "summary": "As a Mentor & Instructor for Lighthouse Labs, I help students as they work through the full-time Web Development Bootcamps with in-person, hands-on mentorship. Mentorship includes being on-hand to assist students on a one-on-one basis, as well as performing ad-hoc breakouts as required.",
       "highlights": [
-        "Leading two-hour subject lectures for students out of the in-person Calgary bootcamps",
+        "Leading two-hour subject lectures for students out of the in-person Edmonton bootcamps",
         "Hosting multiple in-person volunteer HTML/CSS basics bootcamps for people brand new to tech and dipping their toes in"
       ]
     }

@@ -1,0 +1,17 @@
+# Lee Mulvey
+
+> Full-stack engineer based in Edmonton, Alberta, Canada, focused on building thoughtful products and interfaces with TypeScript, React, Next.js, and Node.js.
+
+Personal site and portfolio for Lee Mulvey.
+
+## Pages
+
+- [Home](https://leemulvey.com/): Introduction, background, and the tech stack he reaches for.
+- [Projects](https://leemulvey.com/projects): Shipped work, experiments, and client builds.
+- [Blog](https://leemulvey.com/blog): Occasional posts, plus film reviews synced from Letterboxd.
+- [Contact](https://leemulvey.com/contact): Ways to get in touch — email, GitHub, LinkedIn, resume, and more.
+
+## Notes
+
+- Built with Next.js, TypeScript, and Tailwind CSS.
+- Code: https://github.com/lmulvey

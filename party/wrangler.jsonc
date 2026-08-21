@@ -1,0 +1,9 @@
+{
+  "name": "leemulvey-cursor-chat",
+  "main": "main.ts",
+  "compatibility_date": "2024-09-23",
+  "durable_objects": {
+    "bindings": [{ "name": "Main", "class_name": "CursorChatServer" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["CursorChatServer"] }]
+}

@@ -1,6 +1,8 @@
 allowBuilds:
   core-js-pure: true
+  esbuild: true
   sharp: true
+  workerd: true
 overrides:
   "@types/react": "19.0.3"
   "@types/react-dom": "19.0.2"

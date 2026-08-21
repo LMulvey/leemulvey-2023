@@ -7,8 +7,37 @@ import "./Sidebar.scss";
 import { useTheme } from "next-themes";
 import { LogoSVG } from "../Logo/LogoSVG";
 import { CONTACT_LINKS } from "@/constants/contactLinks";
+import { useCursorChat } from "@/components/CursorChat";
 
 const iconClasses = "text-highlight/80";
+
+const VisitorIndicator = ({
+  count,
+  align = "center",
+}: {
+  count: number;
+  align?: "left" | "center";
+}) => (
+  <div className="relative inline-flex group">
+    <span className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.08em] text-foreground-muted whitespace-nowrap cursor-default">
+      <span className="relative inline-flex h-2 w-2 shrink-0">
+        <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+      </span>
+      {count} online now
+    </span>
+
+    <div
+      className={`absolute top-full mt-2 w-56 rounded-lg bg-card border border-border-muted shadow-lg px-3 py-2 text-xs leading-5 text-foreground-muted opacity-0 pointer-events-none transition-opacity duration-150 group-hover:opacity-100 z-50 ${
+        align === "center" ? "left-1/2 -translate-x-1/2" : "left-0"
+      }`}
+    >
+      Press <span className="font-semibold text-foreground">/</span> anywhere
+      on the site to leave a short message near your cursor for other
+      visitors to see.
+    </div>
+  </div>
+);
 
 const linkClasses = cvu(
   [
@@ -160,6 +189,7 @@ export const Sidebar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const { visitorCount } = useCursorChat();
 
   const isRouteActive = (route: string) =>
     pathname === route || pathname.startsWith(`${route}/`);
@@ -234,6 +264,12 @@ export const Sidebar = () => {
           )}
         </button>
       </div>
+
+      {visitorCount !== null ? (
+        <div className="mb-3 px-1">
+          <VisitorIndicator count={visitorCount} align="left" />
+        </div>
+      ) : null}
 
       <Link
         className={`${linkClasses({
@@ -327,6 +363,12 @@ export const Sidebar = () => {
           </nav>
 
           <div className="flex items-center gap-3">
+            {visitorCount !== null ? (
+              <div className="pr-3 border-r border-border-muted/60">
+                <VisitorIndicator count={visitorCount} />
+              </div>
+            ) : null}
+
             <div className="flex items-center gap-2">
               {CONTACT_LINKS.map((item) => (
                 <a

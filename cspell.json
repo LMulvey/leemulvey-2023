@@ -1,6 +1,7 @@
 {
   "words": [
     "alora",
+    "badwords",
     "Bluesky",
     "clsx",
     "cpath",
@@ -19,6 +20,9 @@
     "nextjs",
     "nowplaying",
     "opengraph",
+    "partykit",
+    "partyserver",
+    "partysocket",
     "paulsen",
     "recenttracks",
     "rehype",

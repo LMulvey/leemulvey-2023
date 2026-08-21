@@ -1,6 +1,6 @@
 allowBuilds:
-  core-js-pure: set this to true or false
-  sharp: set this to true or false
+  core-js-pure: true
+  sharp: true
 overrides:
   "@types/react": "19.0.3"
   "@types/react-dom": "19.0.2"

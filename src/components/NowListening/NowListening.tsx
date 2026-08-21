@@ -150,7 +150,7 @@ export const NowListening = () => {
   const albumArt = isPlaying ? nowPlaying.albumArt : null;
 
   return (
-    <div className="fixed bottom-32 right-2 z-50 w-[min(324px,calc(100vw-2.5rem))] rounded-xl bg-card border border-border-muted shadow-lg p-3 animate-in fade-in-0">
+    <div className="fixed bottom-2 md:bottom-32 right-2 z-50 w-[min(324px,calc(100vw-2.5rem))] rounded-xl bg-card border border-border-muted shadow-lg p-3 animate-in fade-in-0">
       <p className="text-xs m-0 mb-2">Lee is currently listening to:</p>
       <div className="flex items-center gap-3">
         {albumArt ? (

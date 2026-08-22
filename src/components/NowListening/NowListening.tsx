@@ -8,6 +8,13 @@ import "./NowListening.scss";
 const POLL_INTERVAL_MS = 25_000;
 const COLLAPSE_STORAGE_KEY = "now-listening-collapsed";
 
+// Sticks to bottom-2/right-2 on normal screens, but past ~1440px wide the
+// right offset grows so the widget stays pinned near where a 1440px-wide
+// centered column would end, instead of drifting out to the true edge of
+// an ultra-wide monitor.
+const WIDGET_POSITION_CLASSES =
+  "bottom-2 right-[max(0.5rem,calc((100vw-1440px)/2+0.5rem))]";
+
 const EqIcon = ({
   playing,
   className = "",
@@ -140,7 +147,7 @@ export const NowListening = () => {
         type="button"
         onClick={toggleOpen}
         aria-label="Show now playing"
-        className="fixed bottom-5 right-5 z-50 flex items-center justify-center w-11 h-11 rounded-full bg-card border border-border-muted shadow-lg text-highlight/80 hover:text-foreground transition-colors"
+        className={`fixed ${WIDGET_POSITION_CLASSES} z-50 flex items-center justify-center w-11 h-11 rounded-full bg-card border border-border-muted shadow-lg text-highlight/80 hover:text-foreground transition-colors`}
       >
         <EqIcon playing={isPlaying} />
       </button>
@@ -150,7 +157,9 @@ export const NowListening = () => {
   const albumArt = isPlaying ? nowPlaying.albumArt : null;
 
   return (
-    <div className="fixed bottom-2 md:bottom-32 right-2 z-50 w-[min(324px,calc(100vw-2.5rem))] rounded-xl bg-card border border-border-muted shadow-lg p-3 animate-in fade-in-0">
+    <div
+      className={`fixed ${WIDGET_POSITION_CLASSES} z-50 w-[min(324px,calc(100vw-2.5rem))] rounded-xl bg-card border border-border-muted shadow-lg p-3 animate-in fade-in-0`}
+    >
       <p className="text-xs m-0 mb-2">Lee is currently listening to:</p>
       <div className="flex items-center gap-3">
         {albumArt ? (

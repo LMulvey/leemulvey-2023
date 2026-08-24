@@ -160,8 +160,8 @@ export const NowListening = () => {
     >
       <p className="text-xs m-0 mb-2">
         {nowPlaying.playing
-          ? "Lee is currently listening to:"
-          : "Lee was last listening to:"}
+          ? "Lee is currently listening to"
+          : "Lee was last listening to"}
       </p>
       <div className="flex items-center gap-3">
         {nowPlaying.albumArt ? (
@@ -185,7 +185,9 @@ export const NowListening = () => {
             className="block no-underline"
           >
             <div className="flex items-center gap-1.5">
-              <EqIcon playing className="text-highlight/80 shrink-0" />
+              {nowPlaying.playing ? (
+                <EqIcon playing className="text-highlight/80 shrink-0" />
+              ) : null}
               <MarqueeText
                 text={nowPlaying.track}
                 className="text-sm font-semibold text-foreground min-w-0"

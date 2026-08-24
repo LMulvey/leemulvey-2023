@@ -114,7 +114,7 @@ export const NowListening = () => {
         setNowPlaying(data);
       } catch {
         if (!controller.signal.aborted) {
-          setNowPlaying({ playing: false });
+          setNowPlaying(null);
         }
       }
     };
@@ -128,7 +128,7 @@ export const NowListening = () => {
     };
   }, []);
 
-  if (nowPlaying === null || !nowPlaying.playing) {
+  if (nowPlaying === null) {
     return null;
   }
 
@@ -154,19 +154,21 @@ export const NowListening = () => {
     );
   }
 
-  const albumArt = isPlaying ? nowPlaying.albumArt : null;
-
   return (
     <div
       className={`fixed ${WIDGET_POSITION_CLASSES} z-50 w-[min(324px,calc(100vw-2.5rem))] rounded-xl bg-card border border-border-muted shadow-lg p-3 animate-in fade-in-0`}
     >
-      <p className="text-xs m-0 mb-2">Lee is currently listening to:</p>
+      <p className="text-xs m-0 mb-2">
+        {nowPlaying.playing
+          ? "Lee is currently listening to:"
+          : "Lee was last listening to:"}
+      </p>
       <div className="flex items-center gap-3">
-        {albumArt ? (
+        {nowPlaying.albumArt ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={albumArt}
-            alt={`${nowPlaying.playing ? nowPlaying.album : ""} cover`}
+            src={nowPlaying.albumArt}
+            alt={`${nowPlaying.album} cover`}
             className="w-12 h-12 rounded-lg object-cover border border-border-muted/60 shrink-0"
           />
         ) : (

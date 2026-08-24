@@ -1,13 +1,11 @@
-export type NowPlaying =
-  | {
-      playing: true;
-      track: string;
-      artist: string;
-      album: string;
-      albumArt: string | null;
-      url: string;
-    }
-  | { playing: false };
+export type NowPlaying = {
+  playing: boolean;
+  track: string;
+  artist: string;
+  album: string;
+  albumArt: string | null;
+  url: string;
+} | null;
 
 const LASTFM_USERNAME = "LeeMulvey";
 const LASTFM_API_URL = "https://ws.audioscrobbler.com/2.0/";
@@ -33,7 +31,7 @@ export async function getNowPlaying(): Promise<NowPlaying> {
   const apiKey = process.env.LASTFM_API_KEY;
 
   if (!apiKey) {
-    return { playing: false };
+    return null;
   }
 
   try {
@@ -50,7 +48,7 @@ export async function getNowPlaying(): Promise<NowPlaying> {
     });
 
     if (!response.ok) {
-      return { playing: false };
+      return null;
     }
 
     const data = (await response.json()) as {
@@ -58,19 +56,19 @@ export async function getNowPlaying(): Promise<NowPlaying> {
     };
     const track = data.recenttracks?.track?.[0];
 
-    if (!track || track["@attr"]?.nowplaying !== "true") {
-      return { playing: false };
+    if (!track) {
+      return null;
     }
 
     return {
       album: track.album["#text"],
       albumArt: toAlbumArt(track.image),
       artist: track.artist["#text"],
-      playing: true,
+      playing: track["@attr"]?.nowplaying === "true",
       track: track.name,
       url: track.url,
     };
   } catch {
-    return { playing: false };
+    return null;
   }
 }

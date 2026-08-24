@@ -146,15 +146,18 @@ export const CursorChatOverlay = () => {
 
   return (
     <>
-      {Object.entries(messages).map(([connectionId, message]) => (
-        <div
-          key={connectionId}
-          className="fixed z-[60] pointer-events-none -translate-x-1/2 -translate-y-full rounded-xl bg-card border border-border-muted shadow-lg px-3 py-1.5 text-sm text-foreground max-w-[240px] animate-in fade-in-0"
-          style={{ left: `${message.x}%`, top: `${message.y}%` }}
-        >
-          {message.text}
-        </div>
-      ))}
+      {Object.values(messages)
+        .flat()
+        .map((message) => (
+          <div
+            key={message.id}
+            className="fixed z-[60] pointer-events-none -translate-x-1/2 -translate-y-full rounded-xl bg-card border border-border-muted shadow-lg px-3 py-1.5 text-sm text-foreground max-w-[240px] animate-in fade-in-0"
+            style={{ left: `${message.x}%`, top: `${message.y}%` }}
+          >
+            <span className="mr-1">{message.emoji}</span>
+            {message.text}
+          </div>
+        ))}
 
       {compose ? (
         <div

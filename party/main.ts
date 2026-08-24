@@ -11,9 +11,29 @@ const MESSAGE_TTL_MS = 120_000;
 
 const BADWORDS_LIST_URL =
   "https://cdn.jsdelivr.net/npm/badwords-list@2.0.1-4/dist/array.min.js";
-const FALLBACK_BLOCKED_WORDS = ["fuck", "shit", "bitch"];
 
 const URL_PATTERN = /(https?:\/\/|www\.)\S+/i;
+
+const SENDER_EMOJIS = [
+  "😀", "😂", "😊", "😎", "🤓", "🥳", "🤠", "🤖", "👻", "🐶",
+  "🐱", "🦊", "🐻", "🐼", "🐨", "🐵", "🐸", "🐙", "🦄", "🐝",
+  "🦋", "🐢", "🦉", "🐳", "🦖", "🍀", "🌵", "🌈", "⭐", "🔥",
+  "🍕", "🍩", "🍪", "🎈", "🎨", "🚀", "⚡", "💎", "🎲", "🧩",
+];
+
+function hashToIndex(value: string, length: number) {
+  let hash = 5381;
+
+  for (let i = 0; i < value.length; i++) {
+    hash = (hash * 33) ^ value.charCodeAt(i);
+  }
+
+  return Math.abs(hash) % length;
+}
+
+function emojiForSender(senderId: string) {
+  return SENDER_EMOJIS[hashToIndex(senderId, SENDER_EMOJIS.length)];
+}
 
 type ConnectionState = {
   lastMessageAt: number;
@@ -31,7 +51,6 @@ function buildBlockedWordsPattern(words: string[]) {
   return new RegExp(`\\b(?:${escaped.join("|")})\\b`, "i");
 }
 
-const FALLBACK_PATTERN = buildBlockedWordsPattern(FALLBACK_BLOCKED_WORDS);
 let blockedWordsPatternPromise: Promise<RegExp> | null = null;
 
 function loadBlockedWordsPattern(): Promise<RegExp> {
@@ -61,7 +80,7 @@ function loadBlockedWordsPattern(): Promise<RegExp> {
           words.filter((word): word is string => typeof word === "string"),
         );
       })
-      .catch(() => FALLBACK_PATTERN);
+      .catch(() => buildBlockedWordsPattern([]));
   }
 
   return blockedWordsPatternPromise;
@@ -159,6 +178,7 @@ export class CursorChatServer extends Server<Env> {
     this.broadcast(
       JSON.stringify({
         connectionId: sender.id,
+        emoji: emojiForSender(sender.id),
         expiresAt: now + MESSAGE_TTL_MS,
         text,
         type: "message",

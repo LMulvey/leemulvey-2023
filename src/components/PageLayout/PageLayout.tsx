@@ -3,7 +3,6 @@
 import { ReactNode } from "react";
 import { Sidebar } from "../Sidebar";
 import { Footer } from "../Footer";
-import { NowListening } from "../NowListening";
 import { CursorChatProvider, CursorChatOverlay } from "../CursorChat";
 
 export const PageLayout = ({ children }: { children: ReactNode }) => {
@@ -17,7 +16,6 @@ export const PageLayout = ({ children }: { children: ReactNode }) => {
           </div>
           <Footer />
         </div>
-        <NowListening />
       </main>
       <CursorChatOverlay />
     </CursorChatProvider>

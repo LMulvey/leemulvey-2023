@@ -1,0 +1,62 @@
+{
+  "lastCommit": "05c5cfd9277e700671793fdd4022770dfb75c270",
+  "days": [
+    {
+      "date": "2026-08-23",
+      "entries": [
+        "Refined Party Chat's rate limiting and content moderation",
+        "Cleaned up the Now Listening widget so its animated equalizer only shows while something's actually playing"
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "entries": [
+        "Added a \"Now Listening\" widget showing what I'm currently playing, via Last.fm",
+        "Launched Party Chat — a live cursor chat overlay so visitors can leave short messages for each other in real time",
+        "Added a contact page and refined the sidebar navigation",
+        "Fixed positioning of the Now Listening widget on desktop and mobile, plus a couple of build and config fixes"
+      ]
+    },
+    {
+      "date": "2026-05-06",
+      "entries": [
+        "Fixed a text-encoding bug in Letterboxd review excerpts",
+        "Simplified and flattened several card layouts across the site"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "entries": [
+        "Overhauled the Projects and Blog pages with a redesigned layout, and added a new DeFi integrations case study",
+        "Added dynamic Open Graph and Twitter share images, with a couple of follow-up fixes to get them rendering correctly"
+      ]
+    },
+    {
+      "date": "2026-03-06",
+      "entries": [
+        "Published a new post, \"Claude on a Leash.\"",
+        "Fixed mobile layout issues in the sidebar navigation"
+      ]
+    },
+    {
+      "date": "2026-03-05",
+      "entries": [
+        "Cleaned up color tokens across the site and fixed a bug in the light/dark theme toggle",
+        "Fixed incorrect blog post titles"
+      ]
+    },
+    {
+      "date": "2026-03-03",
+      "entries": [
+        "Launched the blog with five initial posts on React, AWS AppSync, and DeFi integrations",
+        "Added a Letterboxd reviews feed alongside blog posts, and fixed path handling and dependency issues that came with it"
+      ]
+    },
+    {
+      "date": "2025-12-08",
+      "entries": [
+        "Patched Next.js to pick up a fix for the react2shell security vulnerability"
+      ]
+    }
+  ]
+}

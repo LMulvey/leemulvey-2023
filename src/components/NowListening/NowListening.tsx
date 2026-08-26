@@ -1,19 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Music2, X } from "lucide-react";
+import {
+  LayoutDashboard,
+  Loader,
+  Loader2,
+  LoaderIcon,
+  Music2,
+} from "lucide-react";
 import { type NowPlaying } from "@/utilities/lastfm";
 import "./NowListening.scss";
 
 const POLL_INTERVAL_MS = 25_000;
-const COLLAPSE_STORAGE_KEY = "now-listening-collapsed";
-
-// Sticks to bottom-2/right-2 on normal screens, but past ~1440px wide the
-// right offset grows so the widget stays pinned near where a 1440px-wide
-// centered column would end, instead of drifting out to the true edge of
-// an ultra-wide monitor.
-const WIDGET_POSITION_CLASSES =
-  "bottom-2 right-[max(0.5rem,calc((100vw-1440px)/2+0.5rem))]";
 
 const EqIcon = ({
   playing,
@@ -87,20 +85,13 @@ const MarqueeText = ({
 };
 
 export const NowListening = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [nowPlaying, setNowPlaying] = useState<NowPlaying | null>(null);
-  const [open, setOpen] = useState(true);
   const controllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
-    const stored = window.sessionStorage.getItem(COLLAPSE_STORAGE_KEY);
-
-    if (stored === "1") {
-      setOpen(false);
-    }
-  }, []);
-
-  useEffect(() => {
     const fetchNowPlaying = async () => {
+      setIsLoading(true);
       controllerRef.current?.abort();
       const controller = new AbortController();
       controllerRef.current = controller;
@@ -116,6 +107,8 @@ export const NowListening = () => {
         if (!controller.signal.aborted) {
           setNowPlaying(null);
         }
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -126,38 +119,18 @@ export const NowListening = () => {
       clearInterval(interval);
       controllerRef.current?.abort();
     };
-  }, []);
+  }, [setIsLoading]);
 
   if (nowPlaying === null) {
-    return null;
-  }
-
-  const isPlaying = nowPlaying.playing;
-
-  const toggleOpen = () => {
-    const next = !open;
-
-    setOpen(next);
-    window.sessionStorage.setItem(COLLAPSE_STORAGE_KEY, next ? "0" : "1");
-  };
-
-  if (!open) {
-    return (
-      <button
-        type="button"
-        onClick={toggleOpen}
-        aria-label="Show now playing"
-        className={`fixed ${WIDGET_POSITION_CLASSES} z-50 flex items-center justify-center w-11 h-11 rounded-full bg-card border border-border-muted shadow-lg text-highlight/80 hover:text-foreground transition-colors`}
-      >
-        <EqIcon playing={isPlaying} />
-      </button>
-    );
+    return isLoading ? (
+      <div className="animate-pulse">
+        <Loader2 className="animate-spin fade-in-0" />
+      </div>
+    ) : null;
   }
 
   return (
-    <div
-      className={`fixed ${WIDGET_POSITION_CLASSES} z-50 w-[min(324px,calc(100vw-2.5rem))] rounded-xl bg-card border border-border-muted shadow-lg p-3 animate-in fade-in-0`}
-    >
+    <div className="w-full rounded-xl bg-card border border-border-muted shadow-lg p-3 animate-in fade-in-0">
       <p className="text-xs m-0 mb-2">
         {nowPlaying.playing
           ? "Lee is currently listening to"
@@ -199,15 +172,6 @@ export const NowListening = () => {
             />
           </a>
         </div>
-
-        <button
-          type="button"
-          onClick={toggleOpen}
-          aria-label="Hide now playing"
-          className="shrink-0 self-start p-1 rounded-md text-foreground-muted/60 hover:text-foreground transition-colors"
-        >
-          <X size={14} />
-        </button>
       </div>
     </div>
   );

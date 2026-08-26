@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const currentYear = new Date().getFullYear();
 
 export const Footer = () => {
@@ -20,6 +22,11 @@ export const Footer = () => {
           GitHub
         </a>{" "}
         or don&apos;t hesitate to get in touch ❤️
+      </p>
+      <p className="mt-2 text-xs">
+        <Link className="underline text-foreground-muted" href="/changelog">
+          Changelog
+        </Link>
       </p>
     </footer>
   );

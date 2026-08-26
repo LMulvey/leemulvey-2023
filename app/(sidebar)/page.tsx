@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { NowListening } from "@/components/NowListening";
 
 const WHOAMI: { id: string; label: ReactNode; emoji: ReactNode }[] = [
   { emoji: <>👨🏼</>, id: "father", label: "weird dad" },
@@ -128,10 +129,17 @@ export default function Home() {
 
       <section className="mt-8 bg-card-elevated/40 px-5 py-5 md:px-7 md:py-6">
         <p className="m-0 text-[15px] leading-7 text-foreground-muted">
-          Check out my <Link href="/projects">projects</Link>, read the
-          occasional <Link href="/blog">blog post</Link>, or dig into the code
-          on{" "}
+          Check out my{" "}
+          <Link className="underline" href="/projects">
+            projects
+          </Link>
+          , read the occasional{" "}
+          <Link className="underline" href="/blog">
+            blog post
+          </Link>
+          , or dig into the code on{" "}
           <a
+            className="underline"
             href="https://github.com/lmulvey"
             target="_blank"
             rel="noreferrer noopener"
@@ -140,6 +148,15 @@ export default function Home() {
           </a>
           .
         </p>
+      </section>
+      <section className="hidden md:block mt-20 border border-foreground-muted/20 rounded-xl p-8">
+        <h2 className="m-0 text-2xl md:text-3xl font-semibold tracking-[-0.015em] text-foreground">
+          Powered by music (and coffee), all day long
+        </h2>
+        <p className="mt-3 mb-0 text-[15px] leading-7 text-foreground-muted">
+          If I&apos;m not listening to music, I&apos;m probably in a meeting
+        </p>
+        <NowListening />
       </section>
     </article>
   );

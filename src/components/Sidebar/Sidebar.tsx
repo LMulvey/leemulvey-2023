@@ -8,6 +8,7 @@ import { useTheme } from "next-themes";
 import { LogoSVG } from "../Logo/LogoSVG";
 import { CONTACT_LINKS } from "@/constants/contactLinks";
 import { useCursorChat } from "@/components/CursorChat";
+import { NowListening } from "@/components/NowListening";
 
 const iconClasses = "text-highlight/80";
 
@@ -122,6 +123,7 @@ const overlayAsideClasses = cvu(
     "max-w-full",
     "pt-16",
     "px-8",
+    "pb-6",
     "border-x",
     "border-x-border-muted",
     "bg-background/80",
@@ -129,6 +131,7 @@ const overlayAsideClasses = cvu(
     "flex-col",
     "gap-1",
     "z-40",
+    "overflow-y-auto",
     "transition-transform",
     "duration-300",
     "shadow-lg",
@@ -315,6 +318,10 @@ export const Sidebar = () => {
           {item.label}
         </a>
       ))}
+
+      <div className="mt-4">
+        <NowListening />
+      </div>
     </>
   );
 

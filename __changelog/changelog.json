@@ -1,6 +1,13 @@
 {
-  "lastCommit": "05c5cfd9277e700671793fdd4022770dfb75c270",
+  "lastCommit": "c66bab5dd8d95df3e7120e4735d3f6f9eb276554",
   "days": [
+    {
+      "date": "2026-08-26",
+      "entries": [
+        "Adjust Now Listening to only show on homepage",
+        "Add changelog"
+      ]
+    },
     {
       "date": "2026-08-23",
       "entries": [

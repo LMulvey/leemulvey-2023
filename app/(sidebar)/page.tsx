@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { NowListening } from "@/components/NowListening";
+import { HomeShaderBackground } from "@/components/Shader";
 
 const WHOAMI: { id: string; label: ReactNode; emoji: ReactNode }[] = [
   { emoji: <>👨🏼</>, id: "father", label: "weird dad" },
@@ -56,6 +57,7 @@ export default function Home() {
 
   return (
     <article className="w-full max-w-5xl mx-auto pb-8">
+      <HomeShaderBackground />
       <section className="px-5 py-6 md:px-8 md:py-8">
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
           <Image
@@ -85,7 +87,7 @@ export default function Home() {
           {WHOAMI.map(({ id, label, emoji }) => (
             <span
               key={id}
-              className="text-[11px] leading-4 h-min font-medium uppercase tracking-[0.06em] bg-accent/80 text-accent-foreground/90 border border-border/40 px-2.5 py-1 rounded-md shadow-sm"
+              className="text-[11px] leading-4 h-min font-medium uppercase tracking-[0.06em] bg-accent/80 text-accent-foreground/90 px-2.5 py-1 rounded-md shadow-sm"
             >
               {label} {emoji}
             </span>
@@ -118,7 +120,7 @@ export default function Home() {
             {TECH.map(({ id, label }) => (
               <span
                 key={id}
-                className="text-[11px] leading-4 h-min font-medium uppercase tracking-[0.06em] bg-card-elevated/70 text-foreground-muted border border-border/50 px-2.5 py-1 rounded-md"
+                className="text-[11px] leading-4 h-min font-medium uppercase tracking-[0.06em] bg-card-elevated/70 text-foreground-muted px-2.5 py-1 rounded-md"
               >
                 {label}
               </span>
@@ -127,7 +129,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-8 bg-card-elevated/40 px-5 py-5 md:px-7 md:py-6">
+      <section className="mt-8 bg-card-elevated/80 px-5 py-5 md:px-7 md:py-6">
         <p className="m-0 text-[15px] leading-7 text-foreground-muted">
           Check out my{" "}
           <Link className="underline" href="/projects">
@@ -149,7 +151,7 @@ export default function Home() {
           .
         </p>
       </section>
-      <section className="hidden md:block mt-20 border border-foreground-muted/20 rounded-xl p-8">
+      <section className="hidden md:block mt-20 bg-card-elevated/80 rounded-xl p-8">
         <h2 className="m-0 text-2xl md:text-3xl font-semibold tracking-[-0.015em] text-foreground">
           Powered by music (and coffee), all day long
         </h2>
